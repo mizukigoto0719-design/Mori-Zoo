@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>アジアゾウ｜動物を知る｜もりのどうぶつ園（デモサイト）</title>
+<meta name="description" content="もりのどうぶつ園で暮らすアジアゾウの詳細ページです。器用な鼻や水浴びの様子、赤ちゃんゾウの情報をご覧いただけます。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- お知らせバー -->
+<div class="notice" role="note">
+  <span class="notice__icon" aria-hidden="true">i</span>
+  <p>本日は団体のお客様が多くご来園の予定です。事前購入のeチケットがおすすめです。</p>
+</div>
+
+<!-- ヘッダー -->
+<header class="header" id="top">
+  <a class="logo" href="index.html" aria-label="もりのどうぶつ園 トップへ">
+    <svg class="logo__mark" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="18" r="13" fill="#2e8b57"/><circle cx="14" cy="22" r="9" fill="#3fa66a"/><circle cx="34" cy="22" r="9" fill="#3fa66a"/><rect x="21" y="26" width="6" height="16" rx="3" fill="#7a5230"/></svg>
+    <span class="logo__text"><strong>もりのどうぶつ園</strong><small>Mori-no Zoo (Demo)</small></span>
+  </a>
+
+  <button class="burger" id="burger" aria-expanded="false" aria-controls="gnav" aria-label="メニューを開く">
+    <span></span><span></span><span></span>
+  </button>
+
+  <nav class="gnav" id="gnav" aria-label="メインメニュー">
+    <ul>
+      <li><a href="index.html#guide">ご利用案内</a></li>
+      <li><a href="index.html#about">動物園について</a></li>
+      <li><a href="index.html#events">ふれあい・イベント</a></li>
+      <li><a href="animals.html" aria-current="page">動物を知る</a></li>
+      <li><a href="index.html#faq">よくある質問</a></li>
+      <li><a href="index.html#around">周辺観光</a></li>
+    </ul>
+    <a class="gnav__cta" href="ticket.html">eチケット購入</a>
+  </nav>
+</header>
+<div class="backdrop" id="navBackdrop" hidden></div>
+
+<main>
+  <!-- ヒーロー -->
+  <section class="detail-hero" aria-labelledby="elephantTitle">
+    <div class="detail-hero__inner">
+      <nav class="breadcrumb" aria-label="パンくずリスト">
+        <ol>
+          <li><a href="index.html">ホーム</a></li>
+          <li><a href="animals.html">動物を知る</a></li>
+          <li aria-current="page">アジアゾウ</li>
+        </ol>
+      </nav>
+
+      <div class="detail-hero__grid">
+        <div class="detail-hero__media">
+          <img src="images/elephant.jpg" alt="アジアゾウ">
+        </div>
+
+        <div class="detail-hero__info">
+          <span class="detail-badge">サバンナ・草原エリア</span>
+          <p class="detail-en">Asian Elephant / <em>Elephas maximus</em></p>
+          <h1 class="detail-title" id="elephantTitle" data-split data-split-now>アジアゾウ</h1>
+          <p class="detail-lead">器用な鼻でエサをつかんだり水浴びをしたり。今年は元気な赤ちゃんゾウも仲間入りしました。</p>
+
+          <table class="price detail-spec">
+            <tr><th>展示エリア</th><td>サバンナ・草原エリア</td></tr>
+            <tr><th>生息地</th><td>東南アジア・インド周辺</td></tr>
+            <tr><th>好きな食べ物</th><td>乾草・バナナ・サツマイモ</td></tr>
+            <tr><th>お食事タイム</th><td>15:30〜（公開中）</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 注目ポイント・特徴 -->
+  <section class="detail-sec" aria-labelledby="featuresTitle">
+    <h2 class="detail-sec__title" id="featuresTitle" data-split>ここを見てほしい！注目ポイント</h2>
+
+    <div class="feature-grid">
+      <article class="fcard">
+        <span class="fcard__num">POINT 01</span>
+        <h3>器用に動く長い鼻</h3>
+        <p>約4万もの筋肉が集まっている鼻は力持ちでありながらとても繊細。小さなエサをつまんだり、水を吸い上げて背中にかけて水浴びをしたりします。</p>
+      </article>
+
+      <article class="fcard">
+        <span class="fcard__num">POINT 02</span>
+        <h3>元気な赤ちゃんゾウが仲間入り</h3>
+        <p>今年生まれた赤ちゃんゾウが、お母さんのすぐそばで見守られながら元気に過ごしています。よちよち歩きや鼻の使い方を練習する姿に注目です。</p>
+      </article>
+
+      <article class="fcard">
+        <span class="fcard__num">POINT 03</span>
+        <h3>丸みのある背中と小さな耳</h3>
+        <p>アフリカゾウに比べて耳が小さく、背中が丸く盛り上がっているのがアジアゾウの特徴です。頭頂部が2つのこぶのように見えることもあります。</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- 飼育員からの豆知識（アコーディオン） -->
+  <section class="news" aria-labelledby="triviaTitle">
+    <h2 class="news__title" id="triviaTitle" data-split>飼育員が教えるゾウの豆知識</h2>
+    <div class="acc" data-accordion>
+      <div class="acc__item">
+        <h3><button class="acc__btn" aria-expanded="false">
+          <span class="tag tag--animal">成長</span><span class="acc__text">赤ちゃんゾウはお母さんのどこにつかまって歩くの？</span><i class="acc__icon" aria-hidden="true"></i>
+        </button></h3>
+        <div class="acc__panel"><div><p>赤ちゃんは鼻先をお母さんのしっぽや後ろ足、おなかのあたりにそっと添えて、安心しながら一緒に行動することがあります。</p></div></div>
+      </div>
+      <div class="acc__item">
+        <h3><button class="acc__btn" aria-expanded="false">
+          <span class="tag tag--event">お食事</span><span class="acc__text">お食事タイムではどんな様子が見られる？</span><i class="acc__icon" aria-hidden="true"></i>
+        </button></h3>
+        <div class="acc__panel"><div><p>鼻先で草やフルーツを器用に口元へ運ぶ様子や、飼育員の合図に合わせて落ち着いて過ごす姿をご覧いただけます。</p></div></div>
+      </div>
+      <div class="acc__item">
+        <h3><button class="acc__btn" aria-expanded="false">
+          <span class="tag">からだ</span><span class="acc__text">どうして泥や水をかけるの？</span><i class="acc__icon" aria-hidden="true"></i>
+        </button></h3>
+        <div class="acc__panel"><div><p>強い日差しや虫から皮膚を守るためです。乾いた泥や砂が日焼け止めや虫よけの代わりになります。</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 他のなかま・戻る導線 -->
+  <section class="sub-cta">
+    <div class="sub-cta__box">
+      <div>
+        <h2>ほかの動物たちも見てみよう</h2>
+        <p>サバンナや森、水辺で暮らす仲間たちの紹介ページへ戻れます。</p>
+      </div>
+      <div class="sub-cta__btns">
+        <a class="btn btn--grad" href="animals.html">動物を知る一覧へ →</a>
+        <a class="btn btn--outline" href="index.html">トップページへ戻る</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <p class="footer__follow">フォローして動物園とつながろう！</p>
+  <ul class="sns" aria-label="SNS">
+    <li><a href="#" aria-label="X"><img src="images/x.png" alt=""></a></li>
+    <li><a href="#" aria-label="Instagram"><img src="images/Instagram.png" alt=""></a></li>
+    <li><a href="#" aria-label="LINE"><img src="images/LINE.png" alt=""></a></li>
+    <li><a href="#" aria-label="YouTube"><img src="images/youtube.png" alt=""></a></li>
+    <li><a href="#" aria-label="Facebook"><img src="images/Facebook.png" alt=""></a></li>
+  </ul>
+  <ul class="footer__links">
+    <li><a href="index.html#guide">ご利用案内</a></li><li><a href="index.html#about">動物園について</a></li><li><a href="index.html#events">ふれあい・イベント</a></li>
+    <li><a href="animals.html">動物を知る</a></li><li><a href="#">運営会社</a></li><li><a href="#">プライバシーポリシー</a></li>
+    <li><a href="#">採用情報</a></li><li><a href="#">団体・法人のお客様へ</a></li>
+  </ul>
+  <p class="footer__copy">© 2026 Mori-no Zoo (Demo). 架空の施設によるデモサイトです。</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>動物を知る｜もりのどうぶつ園（デモサイト）</title>
+<meta name="description" content="もりのどうぶつ園で暮らす動物たちの紹介ページです。エリア別の検索や飼育員の豆知識をご覧いただけます。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- お知らせバー -->
+<div class="notice" role="note">
+  <span class="notice__icon" aria-hidden="true">i</span>
+  <p>本日は団体のお客様が多くご来園の予定です。事前購入のeチケットがおすすめです。</p>
+</div>
+
+<!-- ヘッダー -->
+<header class="header" id="top">
+  <a class="logo" href="index.html" aria-label="もりのどうぶつ園 トップへ">
+    <svg class="logo__mark" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="18" r="13" fill="#2e8b57"/><circle cx="14" cy="22" r="9" fill="#3fa66a"/><circle cx="34" cy="22" r="9" fill="#3fa66a"/><rect x="21" y="26" width="6" height="16" rx="3" fill="#7a5230"/></svg>
+    <span class="logo__text"><strong>もりのどうぶつ園</strong><small>Mori-no Zoo (Demo)</small></span>
+  </a>
+
+  <button class="burger" id="burger" aria-expanded="false" aria-controls="gnav" aria-label="メニューを開く">
+    <span></span><span></span><span></span>
+  </button>
+
+  <nav class="gnav" id="gnav" aria-label="メインメニュー">
+    <ul>
+      <li><a href="index.html#guide">ご利用案内</a></li>
+      <li><a href="index.html#about">動物園について</a></li>
+      <li><a href="index.html#events">ふれあい・イベント</a></li>
+      <li><a href="animals.html" aria-current="page">動物を知る</a></li>
+      <li><a href="index.html#faq">よくある質問</a></li>
+      <li><a href="index.html#around">周辺観光</a></li>
+    </ul>
+    <a class="gnav__cta" href="ticket.html">eチケット購入</a>
+  </nav>
+</header>
+<div class="backdrop" id="navBackdrop" hidden></div>
+
+<main>
+  <!-- サブページヒーロー -->
+  <section class="subhero" aria-label="動物を知る">
+    <div class="subhero__bg" data-parallax="0.2">
+      <img src="images/forest.png" alt="緑豊かな森の展示エリア">
+    </div>
+    <div class="subhero__inner">
+      <nav class="breadcrumb" aria-label="パンくずリスト">
+        <ol>
+          <li><a href="index.html">ホーム</a></li>
+          <li aria-current="page">動物を知る</li>
+        </ol>
+      </nav>
+      <p class="subhero__en">ANIMALS</p>
+      <h1 class="subhero__title" data-split data-split-now>動物を知る</h1>
+      <p class="subhero__lead">草原から森、水辺まで。もりのどうぶつ園で暮らす個性豊かな仲間たちをご紹介します。</p>
+    </div>
+  </section>
+
+  <!-- エリア別フィルター & 動物一覧 -->
+  <section class="animals-sec" aria-labelledby="animalsListTitle">
+    <div class="animals-sec__head">
+      <h2 class="animals-sec__title" id="animalsListTitle" data-split>園内のなかまたち</h2>
+      <div class="filter-bar" role="group" aria-label="展示エリアで絞り込む">
+        <button class="filter-btn is-active" type="button" data-filter="all">すべて</button>
+        <button class="filter-btn" type="button" data-filter="savanna">サバンナ・草原</button>
+        <button class="filter-btn" type="button" data-filter="forest">森のなかまたち</button>
+        <button class="filter-btn" type="button" data-filter="water">水辺・海</button>
+        <button class="filter-btn" type="button" data-filter="fureai">ふれあい広場</button>
+      </div>
+    </div>
+
+    <p class="animals-count" id="animalsCount" aria-live="polite">全 6 種類を表示中</p>
+
+    <ul class="animal-grid" id="animalGrid">
+      <li class="animal-item" data-area="savanna">
+  <a class="acard" href="giraffe.html">
+    <div class="acard__img">
+      <img src="images/giraffe.jpg" alt="アミメキリン">
+      <span class="acard__area acard__area--orange">サバンナ・草原</span>
+    </div>
+    <div class="acard__body">
+      <small class="acard__en">Reticulated Giraffe</small>
+      <h3 class="acard__name">アミメキリン</h3>
+      <p class="acard__desc">長いまつげと網目模様が特徴。高い木の葉を食べるために進化した長い首と舌に注目です。</p>
+      <span class="acard__more">くわしく見る <i>›</i></span>
+    </div>
+  </a>
+</li>
+
+      <li class="animal-item" data-area="savanna">
+  <a class="acard" href="elephant.html">
+    <div class="acard__img">
+      <img src="images/elephant.jpg" alt="アジアゾウ">
+      <span class="acard__area acard__area--orange">サバンナ・草原</span>
+    </div>
+    <div class="acard__body">
+      <small class="acard__en">Asian Elephant</small>
+      <h3 class="acard__name">アジアゾウ</h3>
+      <p class="acard__desc">器用な鼻でエサをつかんだり水浴びをしたり。今年は元気な赤ちゃんゾウも仲間入りしました。</p>
+      <span class="acard__more">くわしく見る <i>›</i></span>
+    </div>
+  </a>
+</li>
+
+      <li class="animal-item" data-area="forest">
+  <a class="acard" href="panda.html">
+    <div class="acard__img">
+      <img src="images/panda.jpg" alt="レッサーパンダ">
+      <span class="acard__area acard__area--green">森のなかまたち</span>
+    </div>
+    <div class="acard__body">
+      <small class="acard__en">Red Panda</small>
+      <h3 class="acard__name">レッサーパンダ</h3>
+      <p class="acard__desc">ふわふわのしましま尻尾がチャームポイント。木登りが得意で、昼間は枝の上でお昼寝することも。</p>
+      <span class="acard__more">くわしく見る <i>›</i></span>
+    </div>
+  </a>
+</li>
+
+      <li class="animal-item" data-area="water">
+  <a class="acard" href="penguin.html">
+    <div class="acard__img">
+      <img src="images/penguin.jpg" alt="フンボルトペンギン">
+      <span class="acard__area acard__area--blue">水辺・海</span>
+    </div>
+    <div class="acard__body">
+      <small class="acard__en">Humboldt Penguin</small>
+      <h3 class="acard__name">フンボルトペンギン</h3>
+      <p class="acard__desc">陸ではよちよち歩きですが、水の中では飛ぶように泳ぎます。お散歩タイムは大人気！</p>
+      <span class="acard__more">くわしく見る <i>›</i></span>
+    </div>
+  </a>
+</li>
+
+      <li class="animal-item" data-area="fureai">
+  <a class="acard" href="guinea.html">
+    <div class="acard__img">
+      <img src="images/guinea.jpg" alt="モルモット">
+      <span class="acard__area acard__area--coral">ふれあい広場</span>
+    </div>
+    <div class="acard__body">
+      <small class="acard__en">Guinea Pig</small>
+      <h3 class="acard__name">モルモット</h3>
+      <p class="acard__desc">「プイプイ」と可愛い声でおしゃべりします。ふれあい広場でやさしくなでてみよう。</p>
+      <span class="acard__more">くわしく見る <i>›</i></span>
+    </div>
+  </a>
+</li>
+
+     <li class="animal-item" data-area="forest">
+  <a class="acard" href="nocturnal.html">
+    <div class="acard__img">
+      <img src="images/night.jpg" alt="森の夜行性アニマル">
+      <span class="acard__area acard__area--green">森のなかまたち</span>
+    </div>
+    <div class="acard__body">
+      <small class="acard__en">Nocturnal Forest Animals</small>
+      <h3 class="acard__name">森の夜行性アニマル</h3>
+      <p class="acard__desc">昼間は静かに休み、夕方から活発に動き出す森の住人たち。暗闇で光る大きな瞳に注目です。</p>
+      <span class="acard__more">くわしく見る <i>›</i></span>
+    </div>
+  </a>
+</li>
+    </ul>
+  </section>
+
+  <!-- 飼育員の観察ポイント（アコーディオン） -->
+  <section class="news" aria-labelledby="keeperTipsTitle">
+    <h2 class="news__title" id="keeperTipsTitle" data-split>飼育員おすすめ！観察のコツ</h2>
+    <div class="acc" data-accordion>
+      <div class="acc__item">
+        <h3><button class="acc__btn" aria-expanded="false">
+          <span class="tag tag--animal">朝イチ</span><span class="acc__text">開園直後（9:00〜10:30）は動物たちが一番活発！</span><i class="acc__icon" aria-hidden="true"></i>
+        </button></h3>
+        <div class="acc__panel"><div><p>朝ごはんの時間に合わせて運動場に出たばかりの動物たちは、元気に歩き回ったり仲間とコミュニケーションをとったりする姿が見られます。</p></div></div>
+      </div>
+      <div class="acc__item">
+        <h3><button class="acc__btn" aria-expanded="false">
+          <span class="tag tag--event">お食事</span><span class="acc__text">「もぐもぐタイム」で食べ方の違いを比べよう</span><i class="acc__icon" aria-hidden="true"></i>
+        </button></h3>
+        <div class="acc__panel"><div><p>キリンは長い舌を巻きつけて、ゾウは鼻先で器用に、レッサーパンダは前足でしっかり握って食べます。飼育員の解説も必聴です。</p></div></div>
+      </div>
+      <div class="acc__item">
+        <h3><button class="acc__btn" aria-expanded="false">
+          <span class="tag">マナー</span><span class="acc__text">フラッシュ撮影・ガラスを叩くのはお控えください</span><i class="acc__icon" aria-hidden="true"></i>
+        </button></h3>
+        <div class="acc__panel"><div><p>動物たちが驚いてストレスを感じないよう、カメラのフラッシュはOFFにし、静かに見守ってあげてください。</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 園内マップ・トップへ戻る導線 -->
+  <section class="sub-cta">
+    <div class="sub-cta__box">
+      <div>
+        <h2>気になる動物に会いに行こう！</h2>
+        <p>展示エリアの場所は園内マップからご確認いただけます。</p>
+      </div>
+      <div class="sub-cta__btns">
+        <button class="btn btn--grad" type="button" data-modal="tpl-map">園内マップを見る →</button>
+        <a class="btn btn--outline" href="index.html">トップページへ戻る</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <p class="footer__follow">フォローして動物園とつながろう！</p>
+  <ul class="sns" aria-label="SNS">
+    <li><a href="#" aria-label="X"><img src="images/x.png" alt=""></a></li>
+    <li><a href="#" aria-label="Instagram"><img src="images/Instagram.png" alt=""></a></li>
+    <li><a href="#" aria-label="LINE"><img src="images/LINE.png" alt=""></a></li>
+    <li><a href="#" aria-label="YouTube"><img src="images/youtube.png" alt=""></a></li>
+    <li><a href="#" aria-label="Facebook"><img src="images/Facebook.png" alt=""></a></li>
+  </ul>
+  <ul class="footer__links">
+    <li><a href="index.html#guide">ご利用案内</a></li><li><a href="index.html#about">動物園について</a></li><li><a href="index.html#events">ふれあい・イベント</a></li>
+    <li><a href="animals.html">動物を知る</a></li><li><a href="#">運営会社</a></li><li><a href="#">プライバシーポリシー</a></li>
+    <li><a href="#">採用情報</a></li><li><a href="#">団体・法人のお客様へ</a></li>
+  </ul>
+  <p class="footer__copy">© 2026 Mori-no Zoo (Demo). 架空の施設によるデモサイトです。</p>
+</footer>
+
+<!-- モーダル -->
+<dialog class="modal" id="modal" aria-labelledby="modalTitle">
+  <div class="modal__box">
+    <button class="modal__close" data-close aria-label="閉じる">×</button>
+    <div class="modal__content" id="modalContent"></div>
+  </div>
+</dialog>
+
+<!-- 動物詳細テンプレート -->
+<template id="tpl-detail-giraffe">
+  <h2 id="modalTitle">アミメキリン</h2>
+  <img class="modal__img" src="images/giraffe.jpg" alt="アミメキリン">
+  <table class="price">
+    <tr><th>展示エリア</th><td>サバンナ・草原エリア</td></tr>
+    <tr><th>生息地</th><td>アフリカ東部</td></tr>
+    <tr><th>好きな食べ物</th><td>アカシアの葉・ペレット・にんじん</td></tr>
+    <tr><th>イベント</th><td>14:30〜 キリンのエサやり体験（整理券制）</td></tr>
+  </table>
+  <p class="modal__desc">紫色の長い舌は約45cmもあります。強い日差しから舌を守るため、メラニン色素が多く含まれていると言われています。</p>
+</template>
+
+<template id="tpl-detail-elephant">
+  <h2 id="modalTitle">アジアゾウ</h2>
+  <img class="modal__img" src="images/elephant.jpg" alt="アジアゾウ">
+  <table class="price">
+    <tr><th>展示エリア</th><td>サバンナ・草原エリア</td></tr>
+    <tr><th>生息地</th><td>東南アジア・インド</td></tr>
+    <tr><th>好きな食べ物</th><td>乾草・バナナ・サツマイモ</td></tr>
+    <tr><th>イベント</th><td>15:30〜 ゾウのお食事タイム</td></tr>
+  </table>
+  <p class="modal__desc">今年生まれた赤ちゃんゾウは、いつもお母さんのすぐそばを歩いています。水浴びプールで遊ぶ姿も見どころです。</p>
+</template>
+
+<template id="tpl-detail-panda">
+  <h2 id="modalTitle">レッサーパンダ</h2>
+  <img class="modal__img" src="images/panda.jpg" alt="レッサーパンダ">
+  <table class="price">
+    <tr><th>展示エリア</th><td>森のなかまたちエリア</td></tr>
+    <tr><th>生息地</th><td>ヒマラヤ山脈周辺・中国南部</td></tr>
+    <tr><th>好きな食べ物</th><td>竹の葉・りんご・専用ペレット</td></tr>
+    <tr><th>イベント</th><td>10:30〜 レッサーパンダのもぐもぐタイム</td></tr>
+  </table>
+  <p class="modal__desc">前足には「第6の指」と呼ばれる突起があり、細い竹もしっかり握って食べることができます。</p>
+</template>
+
+<template id="tpl-detail-penguin">
+  <h2 id="modalTitle">フンボルトペンギン</h2>
+  <img class="modal__img" src="images/penguin.jpg" alt="フンボルトペンギン">
+  <table class="price">
+    <tr><th>展示エリア</th><td>水辺・海エリア</td></tr>
+    <tr><th>生息地</th><td>南米チリ・ペルー沿岸</td></tr>
+    <tr><th>好きな食べ物</th><td>アジ・イワシ・キビナゴ</td></tr>
+    <tr><th>イベント</th><td>11:30〜 ペンギンのお散歩タイム</td></tr>
+  </table>
+  <p class="modal__desc">お腹の黒い斑点の模様は1羽ずつ異なり、人間の指紋のように個体を見分ける目印になっています。</p>
+</template>
+
+<template id="tpl-detail-guinea">
+  <h2 id="modalTitle">モルモット</h2>
+  <img class="modal__img" src="images/guinea.jpg" alt="モルモット">
+  <table class="price">
+    <tr><th>展示エリア</th><td>ふれあい広場</td></tr>
+    <tr><th>生息地</th><td>南米アンデス山脈周辺</td></tr>
+    <tr><th>好きな食べ物</th><td>牧草・キャベツ・にんじん</td></tr>
+    <tr><th>イベント</th><td>13:00〜 ふれあい広場（整理券制）</td></tr>
+  </table>
+  <p class="modal__desc">群れで暮らす穏やかな性格の動物です。感情によって鳴き声を使い分けるので耳を澄ませてみてください。</p>
+</template>
+
+<template id="tpl-detail-night">
+  <h2 id="modalTitle">森の夜行性アニマル</h2>
+  <img class="modal__img" src="images/night.jpg" alt="森の夜行性アニマル">
+  <table class="price">
+    <tr><th>展示エリア</th><td>森のなかまたちエリア（夜行性館）</td></tr>
+    <tr><th>主な仲間</th><td>フクロウ・ムササビ・コウモリ など</td></tr>
+    <tr><th>見どころ</th><td>暗闇でも獲物を見つける鋭い視覚と聴覚</td></tr>
+  </table>
+  <p class="modal__desc">館内は昼夜を逆転させた照明になっているため、日中にお越しいただいても活発に動く様子を観察できます。</p>
+</template>
+
+<template id="tpl-map">
+  <h2 id="modalTitle">園内マップ</h2>
+  <img class="modal__img" src="images/map.png" alt="園内マップ">
+</template>
+
+<script src="script.js"></script>
+<script>
+  // 動物一覧のエリア絞り込みフィルター
+  (() => {
+    const btns = document.querySelectorAll('.filter-btn');
+    const items = document.querySelectorAll('.animal-item');
+    const count = document.getElementById('animalsCount');
+    if (!btns.length) return;
+
+    btns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const target = btn.dataset.filter;
+        btns.forEach((b) => b.classList.toggle('is-active', b === btn));
+
+        let visible = 0;
+        items.forEach((item) => {
+          const match = target === 'all' || item.dataset.area === target;
+          item.hidden = !match;
+          if (match) visible++;
+        });
+        if (count) count.textContent = `全 ${visible} 種類を表示中`;
+      });
+    });
+  })();
+</script>
+</body>
+</html>

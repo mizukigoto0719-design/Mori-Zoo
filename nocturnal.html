@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>森の夜行性アニマル｜動物を知る｜もりのどうぶつ園（デモサイト）</title>
+<meta name="description" content="もりのどうぶつ園で暮らす森の夜行性アニマルの詳細ページです。暗闇で光る大きな瞳や夜の活動の様子、豆知識をご覧いただけます。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- お知らせバー -->
+<div class="notice" role="note">
+  <span class="notice__icon" aria-hidden="true">i</span>
+  <p>本日は団体のお客様が多くご来園の予定です。事前購入のeチケットがおすすめです。</p>
+</div>
+
+<!-- ヘッダー -->
+<header class="header" id="top">
+  <a class="logo" href="index.html" aria-label="もりのどうぶつ園 トップへ">
+    <svg class="logo__mark" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="18" r="13" fill="#2e8b57"/><circle cx="14" cy="22" r="9" fill="#3fa66a"/><circle cx="34" cy="22" r="9" fill="#3fa66a"/><rect x="21" y="26" width="6" height="16" rx="3" fill="#7a5230"/></svg>
+    <span class="logo__text"><strong>もりのどうぶつ園</strong><small>Mori-no Zoo (Demo)</small></span>
+  </a>
+
+  <button class="burger" id="burger" aria-expanded="false" aria-controls="gnav" aria-label="メニューを開く">
+    <span></span><span></span><span></span>
+  </button>
+
+  <nav class="gnav" id="gnav" aria-label="メインメニュー">
+    <ul>
+      <li><a href="index.html#guide">ご利用案内</a></li>
+      <li><a href="index.html#about">動物園について</a></li>
+      <li><a href="index.html#events">ふれあい・イベント</a></li>
+      <li><a href="animals.html" aria-current="page">動物を知る</a></li>
+      <li><a href="index.html#faq">よくある質問</a></li>
+      <li><a href="index.html#around">周辺観光</a></li>
+    </ul>
+    <a href="ticket.html">eチケット購入</a>
+  </nav>
+</header>
+<div class="backdrop" id="navBackdrop" hidden></div>
+
+<main>
+  <!-- ヒーロー -->
+  <section class="detail-hero" aria-labelledby="nocturnalTitle">
+    <div class="detail-hero__inner">
+      <nav class="breadcrumb" aria-label="パンくずリスト">
+        <ol>
+          <li><a href="index.html">ホーム</a></li>
+          <li><a href="animals.html">動物を知る</a></li>
+          <li aria-current="page">森の夜行性アニマル</li>
+        </ol>
+      </nav>
+
+      <div class="detail-hero__grid">
+        <div class="detail-hero__media">
+          <img src="images/night.jpg" alt="森の夜行性アニマル">
+        </div>
+
+        <div class="detail-hero__info">
+          <span class="detail-badge" style="background:var(--green)">森のなかまたちエリア</span>
+          <p class="detail-en">Nocturnal Forest Animals / <em>Night &amp; Forest</em></p>
+          <h1 class="detail-title" id="nocturnalTitle" data-split data-split-now>森の夜行性アニマル</h1>
+          <p class="detail-lead">昼間は静かに休み、夕方から活発に動き出す森の住人たち。暗闇で光る大きな瞳に注目です。</p>
+
+          <table class="price detail-spec">
+            <tr><th>展示エリア</th><td>森のなかまたちエリア（ナイトハウス）</td></tr>
+            <tr><th>生息地</th><td>世界中の森林・樹上や洞の周辺</td></tr>
+            <tr><th>主な食べ物</th><td>果実・昆虫・木の実や小動物</td></tr>
+            <tr><th>見どころの時間</th><td>15:30以降〜夕暮れにかけて活動アップ</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 注目ポイント・特徴 -->
+  <section class="detail-sec" aria-labelledby="featuresTitle">
+    <h2 class="detail-sec__title" id="featuresTitle" data-split>ここを見てほしい！注目ポイント</h2>
+
+    <div class="feature-grid">
+      <article class="fcard">
+        <span class="fcard__num">POINT 01</span>
+        <h3>暗闇で光る大きな瞳</h3>
+        <p>わずかな光も逃さずとらえる大きな目と、網膜の後ろにある光を反射するしくみによって、薄暗い森の中でも周囲をくっきり見ることができます。</p>
+      </article>
+
+      <article class="fcard">
+        <span class="fcard__num">POINT 02</span>
+        <h3>夕方から活発になるリズム</h3>
+        <p>昼間は木の洞や枝の影でじっと休んでいますが、日が落ちて暗くなりはじめると耳をピンと立てて動き出し、探索や食事の時間を迎えます。</p>
+      </article>
+
+      <article class="fcard">
+        <span class="fcard__num">POINT 03</span>
+        <h3>鋭い聴覚と嗅覚のセンサー</h3>
+        <p>目だけでなく、かすかな葉擦れの音を聞き分ける耳や、匂いをたどる鼻先も発達しています。静かに観察すると夜ならではの動きが見えてきます。</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- 飼育員からの豆知識（アコーディオン） -->
+  <section class="news" aria-labelledby="triviaTitle">
+    <h2 class="news__title" id="triviaTitle" data-split>飼育員が教える夜行性アニマルの豆知識</h2>
+    <div class="acc" data-accordion>
+      <div class="acc__item">
+        <h3><button class="acc__btn" aria-expanded="false">
+          <span class="tag tag--animal">からだ</span><span class="acc__text">どうして暗闇で目が光って見えるの？</span><i class="acc__icon" aria-hidden="true"></i>
+        </button></h3>
+        <div class="acc__panel"><div><p>目の奥にある「タペタム（輝板）」という反射層が光をはね返すためです。光を2度通すことで、暗い場所でも明るさを感じやすくなります。</p></div></div>
+      </div>
+      <div class="acc__item">
+        <h3><button class="acc__btn" aria-expanded="false">
+          <span class="tag tag--event">観察</span><span class="acc__text">見学するときに気をつけることはある？</span><i class="acc__icon" aria-hidden="true"></i>
+        </button></h3>
+        <div class="acc__panel"><div><p>強い光やカメラのフラッシュは目の負担になるため控え、小声で静かに観察してください。目が暗さに慣れてくると、輪郭や瞳が少しずつ見えてきます。</p></div></div>
+      </div>
+      <div class="acc__item">
+        <h3><button class="acc__btn" aria-expanded="false">
+          <span class="tag">くらし</span><span class="acc__text">昼間はどんなふうに過ごしているの？</span><i class="acc__icon" aria-hidden="true"></i>
+        </button></h3>
+        <div class="acc__panel"><div><p>外敵に見つかりにくいよう、丸くなったり隠れ家に入ったりしてエネルギーを温存しています。休んでいる姿もそっと見守ってあげてください。</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 他のなかま・戻る導線 -->
+  <section class="sub-cta">
+    <div class="sub-cta__box">
+      <div>
+        <h2>ほかの動物たちも見てみよう</h2>
+        <p>サバンナや森、水辺で暮らす仲間たちの紹介ページへ戻れます。</p>
+      </div>
+      <div class="sub-cta__btns">
+        <a class="btn btn--grad" href="animals.html">動物を知る一覧へ →</a>
+        <a class="btn btn--outline" href="index.html">トップページへ戻る</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <p class="footer__follow">フォローして動物園とつながろう！</p>
+  <ul class="sns" aria-label="SNS">
+    <li><a href="#" aria-label="X"><img src="images/x.png" alt=""></a></li>
+    <li><a href="#" aria-label="Instagram"><img src="images/Instagram.png" alt=""></a></li>
+    <li><a href="#" aria-label="LINE"><img src="images/LINE.png" alt=""></a></li>
+    <li><a href="#" aria-label="YouTube"><img src="images/youtube.png" alt=""></a></li>
+    <li><a href="#" aria-label="Facebook"><img src="images/Facebook.png" alt=""></a></li>
+  </ul>
+  <ul class="footer__links">
+    <li><a href="index.html#guide">ご利用案内</a></li><li><a href="index.html#about">動物園について</a></li><li><a href="index.html#events">ふれあい・イベント</a></li>
+    <li><a href="animals.html">動物を知る</a></li><li><a href="#">運営会社</a></li><li><a href="#">プライバシーポリシー</a></li>
+    <li><a href="#">採用情報</a></li><li><a href="#">団体・法人のお客様へ</a></li>
+  </ul>
+  <p class="footer__copy">© 2026 Mori-no Zoo (Demo). 架空の施設によるデモサイトです。</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

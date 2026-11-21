@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>フンボルトペンギン｜動物を知る｜もりのどうぶつ園（デモサイト）</title>
+<meta name="description" content="もりのどうぶつ園で暮らすフンボルトペンギンの詳細ページです。水中での泳ぎやお散歩タイム、豆知識をご覧いただけます。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- お知らせバー -->
+<div class="notice" role="note">
+  <span class="notice__icon" aria-hidden="true">i</span>
+  <p>本日は団体のお客様が多くご来園の予定です。事前購入のeチケットがおすすめです。</p>
+</div>
+
+<!-- ヘッダー -->
+<header class="header" id="top">
+  <a class="logo" href="index.html" aria-label="もりのどうぶつ園 トップへ">
+    <svg class="logo__mark" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="18" r="13" fill="#2e8b57"/><circle cx="14" cy="22" r="9" fill="#3fa66a"/><circle cx="34" cy="22" r="9" fill="#3fa66a"/><rect x="21" y="26" width="6" height="16" rx="3" fill="#7a5230"/></svg>
+    <span class="logo__text"><strong>もりのどうぶつ園</strong><small>Mori-no Zoo (Demo)</small></span>
+  </a>
+
+  <button class="burger" id="burger" aria-expanded="false" aria-controls="gnav" aria-label="メニューを開く">
+    <span></span><span></span><span></span>
+  </button>
+
+  <nav class="gnav" id="gnav" aria-label="メインメニュー">
+    <ul>
+      <li><a href="index.html#guide">ご利用案内</a></li>
+      <li><a href="index.html#about">動物園について</a></li>
+      <li><a href="index.html#events">ふれあい・イベント</a></li>
+      <li><a href="animals.html" aria-current="page">動物を知る</a></li>
+      <li><a href="index.html#faq">よくある質問</a></li>
+      <li><a href="index.html#around">周辺観光</a></li>
+    </ul>
+    <a class="gnav__cta" href="ticket.html">eチケット購入</a>
+  </nav>
+</header>
+<div class="backdrop" id="navBackdrop" hidden></div>
+
+<main>
+  <!-- ヒーロー -->
+  <section class="detail-hero" aria-labelledby="penguinTitle">
+    <div class="detail-hero__inner">
+      <nav class="breadcrumb" aria-label="パンくずリスト">
+        <ol>
+          <li><a href="index.html">ホーム</a></li>
+          <li><a href="animals.html">動物を知る</a></li>
+          <li aria-current="page">フンボルトペンギン</li>
+        </ol>
+      </nav>
+
+      <div class="detail-hero__grid">
+        <div class="detail-hero__media">
+          <img src="images/penguin.jpg" alt="フンボルトペンギン">
+        </div>
+
+        <div class="detail-hero__info">
+          <span class="detail-badge" style="background:var(--blue)">水辺・海エリア</span>
+          <p class="detail-en">Humboldt Penguin / <em>Spheniscus humboldti</em></p>
+          <h1 class="detail-title" id="penguinTitle" data-split data-split-now>フンボルトペンギン</h1>
+          <p class="detail-lead">陸ではよちよち歩きですが、水の中では飛ぶように泳ぎます。お散歩タイムは大人気！</p>
+
+          <table class="price detail-spec">
+            <tr><th>展示エリア</th><td>水辺・海エリア</td></tr>
+            <tr><th>生息地</th><td>南米チリ・ペルー沿岸</td></tr>
+            <tr><th>好きな食べ物</th><td>アジ・イワシ・キビナゴ</td></tr>
+            <tr><th>お散歩タイム</th><td>11:30〜（通路脇から観察できます）</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 注目ポイント・特徴 -->
+  <section class="detail-sec" aria-labelledby="featuresTitle">
+    <h2 class="detail-sec__title" id="featuresTitle" data-split>ここを見てほしい！注目ポイント</h2>
+
+    <div class="feature-grid">
+      <article class="fcard">
+        <span class="fcard__num">POINT 01</span>
+        <h3>水の中ではまるで「飛ぶ」ように泳ぐ</h3>
+        <p>翼が水中での推進力を生むヒレのように進化しており、水の中ではスイスイと方向を変えながら軽やかに泳ぎ回ります。</p>
+      </article>
+
+      <article class="fcard">
+        <span class="fcard__num">POINT 02</span>
+        <h3>大人気の「お散歩タイム」</h3>
+        <p>陸上でよちよちと歩く愛らしい行列が間近で見られる人気イベントです。歩幅や歩くリズムの違いにも注目してみてください。</p>
+      </article>
+
+      <article class="fcard">
+        <span class="fcard__num">POINT 03</span>
+        <h3>おなかの模様とクチバシの根元</h3>
+        <p>胸から腹にかけての黒い帯や斑点の模様は1羽ずつ異なり、個体を見分ける手がかりになります。クチバシの根元のピンク色の肌も特徴です。</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- 飼育員からの豆知識（アコーディオン） -->
+  <section class="news" aria-labelledby="triviaTitle">
+    <h2 class="news__title" id="triviaTitle" data-split>飼育員が教えるペンギンの豆知識</h2>
+    <div class="acc" data-accordion>
+      <div class="acc__item">
+        <h3><button class="acc__btn" aria-expanded="false">
+          <span class="tag tag--animal">からだ</span><span class="acc__text">どうして羽が水にぬれにくいの？</span><i class="acc__icon" aria-hidden="true"></i>
+        </button></h3>
+        <div class="acc__panel"><div><p>尾の付け根にある脂腺（びせん）から出る油をクチバシで羽全体にぬり広げることで、水をはじき、体温が奪われるのを防いでいます。</p></div></div>
+      </div>
+      <div class="acc__item">
+        <h3><button class="acc__btn" aria-expanded="false">
+          <span class="tag tag--event">お散歩</span><span class="acc__text">お散歩タイムで見るときに気をつけることは？</span><i class="acc__icon" aria-hidden="true"></i>
+        </button></h3>
+        <div class="acc__panel"><div><p>歩くコースをふさがないよう通路の脇でお待ちください。急に手を伸ばしたり大きな音を出したりしないようご協力をお願いします。</p></div></div>
+      </div>
+      <div class="acc__item">
+        <h3><button class="acc__btn" aria-expanded="false">
+          <span class="tag">すみか</span><span class="acc__text">寒い氷の上にくらすペンギンなの？</span><i class="acc__icon" aria-hidden="true"></i>
+        </button></h3>
+        <div class="acc__panel"><div><p>フンボルトペンギンは南米の温暖な沿岸地域にもすむ種類で、岩場や海岸の穴などに巣を作ってくらしています。</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 他のなかま・戻る導線 -->
+  <section class="sub-cta">
+    <div class="sub-cta__box">
+      <div>
+        <h2>ほかの動物たちも見てみよう</h2>
+        <p>サバンナや森、水辺で暮らす仲間たちの紹介ページへ戻れます。</p>
+      </div>
+      <div class="sub-cta__btns">
+        <a class="btn btn--grad" href="animals.html">動物を知る一覧へ →</a>
+        <a class="btn btn--outline" href="index.html">トップページへ戻る</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <p class="footer__follow">フォローして動物園とつながろう！</p>
+  <ul class="sns" aria-label="SNS">
+    <li><a href="#" aria-label="X"><img src="images/x.png" alt=""></a></li>
+    <li><a href="#" aria-label="Instagram"><img src="images/Instagram.png" alt=""></a></li>
+    <li><a href="#" aria-label="LINE"><img src="images/LINE.png" alt=""></a></li>
+    <li><a href="#" aria-label="YouTube"><img src="images/youtube.png" alt=""></a></li>
+    <li><a href="#" aria-label="Facebook"><img src="images/Facebook.png" alt=""></a></li>
+  </ul>
+  <ul class="footer__links">
+    <li><a href="index.html#guide">ご利用案内</a></li><li><a href="index.html#about">動物園について</a></li><li><a href="index.html#events">ふれあい・イベント</a></li>
+    <li><a href="animals.html">動物を知る</a></li><li><a href="#">運営会社</a></li><li><a href="#">プライバシーポリシー</a></li>
+    <li><a href="#">採用情報</a></li><li><a href="#">団体・法人のお客様へ</a></li>
+  </ul>
+  <p class="footer__copy">© 2026 Mori-no Zoo (Demo). 架空の施設によるデモサイトです。</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

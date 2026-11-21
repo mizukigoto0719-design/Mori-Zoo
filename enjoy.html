@@ -1,0 +1,496 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>知れば倍たのしい 動物園を120%楽しむ｜もりのどうぶつ園（デモサイト）</title>
+<meta name="description" content="観察のコツや飼育員の豆知識、モデルコース、遊園地エリアなど、もりのどうぶつ園を120%楽しむためのガイドページ。架空の施設です。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  /* enjoy.html 専用スタイル */
+  .sub-hero {
+    position: relative;
+    padding: 5.5rem 1.25rem 4rem;
+    text-align: center;
+    color: #fff;
+    background: linear-gradient(135deg, rgba(25, 86, 108, 0.86), rgba(46, 139, 87, 0.78)),
+                url("images/amusement.jpg") center / cover no-repeat;
+    border-radius: 0 0 2rem 2rem;
+    overflow: hidden;
+  }
+  .sub-hero__en {
+    font-family: "Poppins", sans-serif;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    font-size: 0.85rem;
+    color: #ffe27a;
+    margin-bottom: 0.5rem;
+  }
+  .sub-hero__title {
+    font-size: clamp(1.7rem, 4vw, 2.55rem);
+    font-weight: 900;
+    line-height: 1.35;
+    margin: 0 0 1rem;
+  }
+  .sub-hero__lead {
+    max-width: 640px;
+    margin: 0 auto;
+    font-size: 0.98rem;
+    line-height: 1.8;
+    opacity: 0.96;
+  }
+  .breadcrumb {
+    max-width: 1040px;
+    margin: 1rem auto 0;
+    padding: 0 1.25rem;
+    font-size: 0.85rem;
+    color: #5b6b61;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    align-items: center;
+  }
+  .breadcrumb a {
+    color: #2e8b57;
+    text-decoration: none;
+    font-weight: 700;
+  }
+  .breadcrumb a:hover { text-decoration: underline; }
+
+  .enjoy-wrap {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 2.5rem 1.25rem 4.5rem;
+  }
+  .sec-head {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  .sec-head__sub {
+    display: inline-block;
+    background: #e7f5ec;
+    color: #257347;
+    font-weight: 700;
+    font-size: 0.82rem;
+    padding: 0.25rem 0.9rem;
+    border-radius: 999px;
+    margin-bottom: 0.5rem;
+  }
+  .sec-head__title {
+    font-size: clamp(1.4rem, 3vw, 1.9rem);
+    font-weight: 900;
+    color: #1f3528;
+    margin: 0;
+  }
+
+  /* 豆知識カード */
+  .trivia-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.35rem;
+    margin-bottom: 3.5rem;
+  }
+  .triviacard {
+    background: #fff;
+    border-radius: 1.25rem;
+    border: 1px solid #e4eee8;
+    box-shadow: 0 8px 24px rgba(28, 56, 40, 0.06);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .triviacard__img {
+    height: 190px;
+    overflow: hidden;
+  }
+  .triviacard__img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .triviacard__body {
+    padding: 1.3rem 1.4rem 1.4rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .triviacard__tag {
+    align-self: flex-start;
+    background: #fff3e6;
+    color: #d95b16;
+    font-weight: 700;
+    font-size: 0.78rem;
+    padding: 0.2rem 0.7rem;
+    border-radius: 999px;
+    margin-bottom: 0.55rem;
+  }
+  .triviacard__title {
+    font-size: 1.18rem;
+    font-weight: 900;
+    color: #1f3528;
+    margin: 0 0 0.5rem;
+  }
+  .triviacard__text {
+    font-size: 0.92rem;
+    line-height: 1.72;
+    color: #46574d;
+    margin: 0 0 1rem;
+    flex: 1;
+  }
+  .triviacard__action {
+    align-self: flex-start;
+    background: #eef6f1;
+    color: #257347;
+    border: none;
+    border-radius: 999px;
+    padding: 0.42rem 1rem;
+    font-weight: 700;
+    font-size: 0.84rem;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+  }
+  .triviacard__action:hover {
+    background: #2e8b57;
+    color: #fff;
+  }
+
+  /* モデルコース */
+  .courses {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.35rem;
+    margin-bottom: 3.5rem;
+  }
+  .course-box {
+    background: #f6faf7;
+    border: 1px solid #dcebe2;
+    border-radius: 1.25rem;
+    padding: 1.5rem;
+  }
+  .course-box__badge {
+    display: inline-block;
+    background: #2e8b57;
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.8rem;
+    padding: 0.22rem 0.8rem;
+    border-radius: 999px;
+    margin-bottom: 0.6rem;
+  }
+  .course-box__badge--alt {
+    background: #ff7b29;
+  }
+  .course-box h3 {
+    font-size: 1.2rem;
+    font-weight: 900;
+    color: #1f3528;
+    margin: 0 0 0.9rem;
+  }
+  .course-steps {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.7rem;
+  }
+  .course-steps li {
+    background: #fff;
+    border-radius: 0.85rem;
+    padding: 0.7rem 0.9rem;
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: #36473d;
+    border-left: 4px solid #2e8b57;
+  }
+  .course-steps strong {
+    color: #1f3528;
+  }
+
+  /* チェックリスト */
+  .checklist-box {
+    background: #fffaf0;
+    border: 2px solid #f7d99c;
+    border-radius: 1.25rem;
+    padding: 1.5rem 1.75rem;
+    margin-bottom: 3rem;
+  }
+  .checklist-box h3 {
+    margin: 0 0 0.75rem;
+    font-size: 1.1rem;
+    color: #9c5b0c;
+  }
+  .checklist {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.65rem 1.25rem;
+    font-size: 0.92rem;
+    color: #5c492e;
+  }
+  .checklist label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+  }
+
+  .back-area {
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.85rem 1.75rem;
+    border-radius: 999px;
+    border: 2px solid #2e8b57;
+    color: #2e8b57;
+    font-weight: 700;
+    text-decoration: none;
+    background: #fff;
+    transition: background 0.15s, color 0.15s;
+  }
+  .btn-outline:hover {
+    background: #2e8b57;
+    color: #fff;
+  }
+
+  @media (max-width: 768px) {
+    .trivia-grid,
+    .courses,
+    .checklist {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- お知らせバー -->
+<div class="notice" role="note">
+  <span class="notice__icon" aria-hidden="true">i</span>
+  <p>ちょっとした視点のヒントで、いつものお散歩がもっと特別な探検に変わります。</p>
+</div>
+
+<!-- ヘッダー -->
+<header class="header" id="top">
+  <a class="logo" href="index.html" aria-label="もりのどうぶつ園 トップへ">
+    <svg class="logo__mark" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="18" r="13" fill="#2e8b57"/><circle cx="14" cy="22" r="9" fill="#3fa66a"/><circle cx="34" cy="22" r="9" fill="#3fa66a"/><rect x="21" y="26" width="6" height="16" rx="3" fill="#7a5230"/></svg>
+    <span class="logo__text"><strong>もりのどうぶつ園</strong><small>Mori-no Zoo (Demo)</small></span>
+  </a>
+
+  <button class="burger" id="burger" aria-expanded="false" aria-controls="gnav" aria-label="メニューを開く">
+    <span></span><span></span><span></span>
+  </button>
+
+  <nav class="gnav" id="gnav" aria-label="メインメニュー">
+    <ul>
+      <li><a href="index.html#guide">ご利用案内</a></li>
+      <li><a href="index.html#about">動物園について</a></li>
+      <li><a href="index.html#events">ふれあい・イベント</a></li>
+      <li><a href="animals.html">動物を知る</a></li>
+      <li><a href="index.html#faq">よくある質問</a></li>
+      <li><a href="index.html#around">周辺観光</a></li>
+    </ul>
+    <a class="gnav__cta" href="ticket.html">eチケット購入</a>
+  </nav>
+</header>
+<div class="backdrop" id="navBackdrop" hidden></div>
+
+<main>
+  <!-- サブヒーロー -->
+  <section class="sub-hero">
+    <p class="sub-hero__en">120% ZOO GUIDE</p>
+    <h1 class="sub-hero__title">知れば倍たのしい<br>動物園を120%楽しむ</h1>
+    <p class="sub-hero__lead">
+      「ただ見る」から「気づいて、つながる」へ。<br>
+      観察のポイントやおすすめコース、園内アトラクションの活用法をまとめました。
+    </p>
+  </section>
+
+  <!-- パンくずリスト -->
+  <nav class="breadcrumb" aria-label="パンくずリスト">
+    <a href="index.html">トップ</a>
+    <span aria-hidden="true">›</span>
+    <a href="index.html#about">園内ガイド</a>
+    <span aria-hidden="true">›</span>
+    <span>知れば倍たのしい 動物園を120%楽しむ</span>
+  </nav>
+
+  <div class="enjoy-wrap">
+    <!-- 観察＆豆知識 -->
+    <section aria-labelledby="triviaTitle">
+      <div class="sec-head">
+        <span class="sec-head__sub">OBSERVATION TIPS</span>
+        <h2 class="sec-head__title" id="triviaTitle">もっと面白くなる4つの視点</h2>
+      </div>
+
+      <div class="trivia-grid">
+        <article class="triviacard">
+          <div class="triviacard__img">
+            <img src="images/keeper.jpg" alt="飼育員とレッサーパンダ">
+          </div>
+          <div class="triviacard__body">
+            <span class="triviacard__tag">飼育員の視点</span>
+            <h3 class="triviacard__title">「足あと・食べあと・寝床」を探してみよう</h3>
+            <p class="triviacard__text">じっとしているように見えても、よく見ると枝をかじった跡やふかふかの寝床づくりなど、暮らしの工夫がいっぱい。掲示板の「飼育員メモ」もぜひチェック！</p>
+            <button class="triviacard__action" type="button" data-modal="tpl-panda">レッサーパンダを見る</button>
+          </div>
+        </article>
+
+        <article class="triviacard">
+          <div class="triviacard__img">
+            <img src="images/touch.png" alt="キリンとふれあう様子">
+          </div>
+          <div class="triviacard__body">
+            <span class="triviacard__tag">ふれあい・体験</span>
+            <h3 class="triviacard__title">整理券とイベント時間は最初にチェック</h3>
+            <p class="triviacard__text">人気のエサやり体験やふれあいプログラムは、時間や定員が決まっています。入園したらまず本日のタイムスケジュールを確認して、無理のない順番で回るのがコツです。</p>
+            <button class="triviacard__action" type="button" data-modal="tpl-events">本日のイベントを見る</button>
+          </div>
+        </article>
+
+        <article class="triviacard">
+          <div class="triviacard__img">
+            <img src="images/amusement.jpg" alt="遊園地エリアと園内の風景">
+          </div>
+          <div class="triviacard__body">
+            <span class="triviacard__tag">メリハリ散策</span>
+            <h3 class="triviacard__title">動物エリア × 遊園地・休憩でペース配分</h3>
+            <p class="triviacard__text">たっぷり歩いたあとは、観覧車やメリーゴーランドなどの遊園地エリアや木陰のベンチでひと休み。子どもも大人も最後まで笑顔で過ごせます。</p>
+            <button class="triviacard__action" type="button" data-modal="tpl-map">園内マップを見る</button>
+          </div>
+        </article>
+
+        <article class="triviacard">
+          <div class="triviacard__img">
+            <img src="images/night.jpg" alt="夕方から夜にかけての園内">
+          </div>
+          <div class="triviacard__body">
+            <span class="triviacard__tag">季節・時間帯</span>
+            <h3 class="triviacard__title">季節や時間帯が変われば、同じ動物も別人級</h3>
+            <p class="triviacard__text">朝一番の活発な動き、お昼のまったりタイム、夕暮れや夜間開園の雰囲気など、訪れる時間によって見せる表情はさまざま。季節ごとの再訪もおすすめです。</p>
+            <button class="triviacard__action" type="button" data-modal="tpl-night">夜間開園について見る</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- おすすめモデルコース -->
+    <section aria-labelledby="courseTitle">
+      <div class="sec-head">
+        <span class="sec-head__sub">MODEL COURSES</span>
+        <h2 class="sec-head__title" id="courseTitle">目的別・おすすめモデルコース</h2>
+      </div>
+
+      <div class="courses">
+        <div class="course-box">
+          <span class="course-box__badge">ファミリー向け</span>
+          <h3>ちいさな子連れでゆっくり満喫コース</h3>
+          <ul class="course-steps">
+            <li><strong>09:30 入園・ベビーカー確認</strong>／まずは広いエリアからゆったりスタート。</li>
+            <li><strong>10:30 レッサーパンダ観察</strong>／座って見やすい位置からじっくり鑑賞。</li>
+            <li><strong>12:00 ランチ＆休憩</strong>／レストランや芝生エリアでお昼ごはん。</li>
+            <li><strong>13:30 ふれあい広場＆遊園地</strong>／モルモット体験のあとは乗り物で気分転換。</li>
+          </ul>
+        </div>
+
+        <div class="course-box">
+          <span class="course-box__badge course-box__badge--alt">じっくり観察派</span>
+          <h3>イベント＆写真撮影をしっかり楽しむコース</h3>
+          <ul class="course-steps">
+            <li><strong>09:00 開園と同時にイン</strong>／光がきれいな午前中に森・草原エリアを巡回。</li>
+            <li><strong>11:30 ペンギンタイム</strong>／動きのあるシーンをベストポジションで観察。</li>
+            <li><strong>14:30 キリンのエサやり体験</strong>／整理券を活用して間近の瞬間を体験。</li>
+            <li><strong>15:30 ゾウのお食事タイム</strong>／1日の締めくくりに迫力の食事シーンを鑑賞。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 持ち物チェックリスト -->
+    <aside class="checklist-box" aria-label="お出かけ前チェックリスト">
+      <h3>🎒 あると便利な持ち物チェックリスト</h3>
+      <ul class="checklist">
+        <li><label><input type="checkbox"> 飲み物（水分補給用ボトル・水筒）</label></li>
+        <li><label><input type="checkbox"> 歩きやすいスニーカー</label></li>
+        <li><label><input type="checkbox"> 帽子・日焼け止め（晴天時）</label></li>
+        <li><label><input type="checkbox"> タオル・ウェットティッシュ</label></li>
+        <li><label><input type="checkbox"> 羽織もの（朝夕・屋内冷房対策）</label></li>
+        <li><label><input type="checkbox"> スマホの充電バッテリー</label></li>
+      </ul>
+    </aside>
+
+    <!-- 導線ボタン -->
+    <div class="back-area">
+      <a class="btn btn--grad" href="feeding.html">🍽️ 間近で見れるお食事タイムへ</a>
+      <a class="btn-outline" href="index.html">← トップページへ戻る</a>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <p class="footer__follow">フォローして動物園とつながろう！</p>
+  <ul class="sns" aria-label="SNS">
+    <li><a href="#" aria-label="X"><img src="images/x.png" alt=""></a></li>
+    <li><a href="#" aria-label="Instagram"><img src="images/Instagram.png" alt=""></a></li>
+    <li><a href="#" aria-label="LINE"><img src="images/LINE.png" alt=""></a></li>
+    <li><a href="#" aria-label="YouTube"><img src="images/youtube.png" alt=""></a></li>
+    <li><a href="#" aria-label="Facebook"><img src="images/Facebook.png" alt=""></a></li>
+  </ul>
+  <ul class="footer__links">
+    <li><a href="index.html#guide">ご利用案内</a></li><li><a href="index.html#about">動物園について</a></li><li><a href="index.html#events">ふれあい・イベント</a></li>
+    <li><a href="animals.html">動物を知る</a></li><li><a href="#">運営会社</a></li><li><a href="#">プライバシーポリシー</a></li>
+    <li><a href="#">採用情報</a></li><li><a href="#">団体・法人のお客様へ</a></li>
+  </ul>
+  <p class="footer__copy">© 2026 Mori-no Zoo (Demo). 架空の施設によるデモサイトです。</p>
+</footer>
+
+<!-- モーダル -->
+<dialog class="modal" id="modal" aria-labelledby="modalTitle">
+  <div class="modal__box">
+    <button class="modal__close" data-close aria-label="閉じる">×</button>
+    <div class="modal__content" id="modalContent"></div>
+  </div>
+</dialog>
+
+<!-- モーダルテンプレート -->
+<template id="tpl-events">
+  <h2 id="modalTitle">本日のイベント</h2>
+  <ul class="timeline">
+    <li><time>10:30</time>レッサーパンダのもぐもぐタイム</li>
+    <li><time>11:30</time>ペンギンのお散歩タイム</li>
+    <li><time>13:00</time>ふれあい広場（モルモット）</li>
+    <li><time>14:30</time>キリンのエサやり体験</li>
+    <li><time>15:30</time>ゾウのお食事タイム</li>
+  </ul>
+  <p class="modal__note">※天候・動物の体調により変更になる場合があります。</p>
+</template>
+<template id="tpl-map">
+  <h2 id="modalTitle">園内マップ</h2>
+  <img class="modal__img" src="images/map.png" alt="園内マップ">
+</template>
+<template id="tpl-panda">
+  <h2 id="modalTitle">レッサーパンダのもぐもぐタイム</h2>
+  <img class="modal__img" src="images/panda.jpg" alt="レッサーパンダ">
+  <p>飼育員の解説つきで、おやつを食べる姿を観察できます。</p>
+</template>
+<template id="tpl-night">
+  <h2 id="modalTitle">夏の夜間開園</h2>
+  <img class="modal__img" src="images/night.jpg" alt="夜の動物園">
+  <p>夏休み期間の金・土曜は20:30まで。夜行性動物の活発な姿に会えます。</p>
+</template>
+
+<script src="script.js"></script>
+</body>
+</html>

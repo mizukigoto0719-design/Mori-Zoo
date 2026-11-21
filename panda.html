@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>レッサーパンダ｜動物を知る｜もりのどうぶつ園（デモサイト）</title>
+<meta name="description" content="もりのどうぶつ園で暮らすレッサーパンダの詳細ページです。ふわふわのしましま尻尾や木登りの様子、もぐもぐタイムの情報をご覧いただけます。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- お知らせバー -->
+<div class="notice" role="note">
+  <span class="notice__icon" aria-hidden="true">i</span>
+  <p>本日は団体のお客様が多くご来園の予定です。事前購入のeチケットがおすすめです。</p>
+</div>
+
+<!-- ヘッダー -->
+<header class="header" id="top">
+  <a class="logo" href="index.html" aria-label="もりのどうぶつ園 トップへ">
+    <svg class="logo__mark" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="18" r="13" fill="#2e8b57"/><circle cx="14" cy="22" r="9" fill="#3fa66a"/><circle cx="34" cy="22" r="9" fill="#3fa66a"/><rect x="21" y="26" width="6" height="16" rx="3" fill="#7a5230"/></svg>
+    <span class="logo__text"><strong>もりのどうぶつ園</strong><small>Mori-no Zoo (Demo)</small></span>
+  </a>
+
+  <button class="burger" id="burger" aria-expanded="false" aria-controls="gnav" aria-label="メニューを開く">
+    <span></span><span></span><span></span>
+  </button>
+
+  <nav class="gnav" id="gnav" aria-label="メインメニュー">
+    <ul>
+      <li><a href="index.html#guide">ご利用案内</a></li>
+      <li><a href="index.html#about">動物園について</a></li>
+      <li><a href="index.html#events">ふれあい・イベント</a></li>
+      <li><a href="animals.html" aria-current="page">動物を知る</a></li>
+      <li><a href="index.html#faq">よくある質問</a></li>
+      <li><a href="index.html#around">周辺観光</a></li>
+    </ul>
+    <a class="gnav__cta" href="ticket.html">eチケット購入</a>
+  </nav>
+</header>
+<div class="backdrop" id="navBackdrop" hidden></div>
+
+<main>
+  <!-- ヒーロー -->
+  <section class="detail-hero" aria-labelledby="pandaTitle">
+    <div class="detail-hero__inner">
+      <nav class="breadcrumb" aria-label="パンくずリスト">
+        <ol>
+          <li><a href="index.html">ホーム</a></li>
+          <li><a href="animals.html">動物を知る</a></li>
+          <li aria-current="page">レッサーパンダ</li>
+        </ol>
+      </nav>
+
+      <div class="detail-hero__grid">
+        <div class="detail-hero__media">
+          <img src="images/panda.jpg" alt="レッサーパンダ">
+        </div>
+
+        <div class="detail-hero__info">
+          <span class="detail-badge" style="background:var(--green)">森のなかまたちエリア</span>
+          <p class="detail-en">Red Panda / <em>Ailurus fulgens</em></p>
+          <h1 class="detail-title" id="pandaTitle" data-split data-split-now>レッサーパンダ</h1>
+          <p class="detail-lead">ふわふわのしましま尻尾がチャームポイント。木登りが得意で、昼間は枝の上でお昼寝することも。</p>
+
+          <table class="price detail-spec">
+            <tr><th>展示エリア</th><td>森のなかまたちエリア</td></tr>
+            <tr><th>生息地</th><td>ヒマラヤ山脈周辺・中国南部</td></tr>
+            <tr><th>好きな食べ物</th><td>竹の葉・りんご・専用ペレット</td></tr>
+            <tr><th>もぐもぐタイム</th><td>10:30〜（飼育員の解説つき）</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 注目ポイント・特徴 -->
+  <section class="detail-sec" aria-labelledby="featuresTitle">
+    <h2 class="detail-sec__title" id="featuresTitle" data-split>ここを見てほしい！注目ポイント</h2>
+
+    <div class="feature-grid">
+      <article class="fcard">
+        <span class="fcard__num">POINT 01</span>
+        <h3>ふわふわのしましま尻尾</h3>
+        <p>体長とほぼ同じ長さがある太くてふわふわの尻尾は、木の上でバランスをとったり、寒い日に体に巻きつけてマフラー代わりにしたりします。</p>
+      </article>
+
+      <article class="fcard">
+        <span class="fcard__num">POINT 02</span>
+        <h3>細い枝もスイスイ登る運動神経</h3>
+        <p>鋭い爪と柔軟な足首を持っており、木登りはもちろん、頭を下にしたまま幹を降りることも得意です。頭上の渡し木を歩く姿も必見です。</p>
+      </article>
+
+      <article class="fcard">
+        <span class="fcard__num">POINT 03</span>
+        <h3>枝の上での可愛いお昼寝ポーズ</h3>
+        <p>昼間は高い枝の上におなかを乗せて手足をぶらんと垂らしたり、丸くなって眠ったりします。見上げながら探してみてください。</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- 飼育員からの豆知識（アコーディオン） -->
+  <section class="news" aria-labelledby="triviaTitle">
+    <h2 class="news__title" id="triviaTitle" data-split>飼育員が教えるレッサーパンダの豆知識</h2>
+    <div class="acc" data-accordion>
+      <div class="acc__item">
+        <h3><button class="acc__btn" aria-expanded="false">
+          <span class="tag tag--animal">からだ</span><span class="acc__text">どうやって細い竹の葉を器用に握るの？</span><i class="acc__icon" aria-hidden="true"></i>
+        </button></h3>
+        <div class="acc__panel"><div><p>前足の手首の骨が発達した「第6の指（種子骨）」と呼ばれる突起があり、人間の親指のように使って竹をぎゅっとつかむことができます。</p></div></div>
+      </div>
+      <div class="acc__item">
+        <h3><button class="acc__btn" aria-expanded="false">
+          <span class="tag tag--event">お食事</span><span class="acc__text">もぐもぐタイムでは何を食べているの？</span><i class="acc__icon" aria-hidden="true"></i>
+        </button></h3>
+        <div class="acc__panel"><div><p>主食の竹の葉に加えて、大好物のりんごや専用ペレットをおやつとしてあげています。両手で持って美味しそうに食べる姿が間近で見られます。</p></div></div>
+      </div>
+      <div class="acc__item">
+        <h3><button class="acc__btn" aria-expanded="false">
+          <span class="tag">なまえ</span><span class="acc__text">「レッサー」ってどういう意味？</span><i class="acc__icon" aria-hidden="true"></i>
+        </button></h3>
+        <div class="acc__panel"><div><p>もともと「パンダ」と呼ばれていましたが、後にジャイアントパンダが発見されたため、区別するために「より小さい（lesser）」パンダと呼ばれるようになりました。</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 他のなかま・戻る導線 -->
+  <section class="sub-cta">
+    <div class="sub-cta__box">
+      <div>
+        <h2>ほかの動物たちも見てみよう</h2>
+        <p>サバンナや森、水辺で暮らす仲間たちの紹介ページへ戻れます。</p>
+      </div>
+      <div class="sub-cta__btns">
+        <a class="btn btn--grad" href="animals.html">動物を知る一覧へ →</a>
+        <a class="btn btn--outline" href="index.html">トップページへ戻る</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <p class="footer__follow">フォローして動物園とつながろう！</p>
+  <ul class="sns" aria-label="SNS">
+    <li><a href="#" aria-label="X"><img src="images/x.png" alt=""></a></li>
+    <li><a href="#" aria-label="Instagram"><img src="images/Instagram.png" alt=""></a></li>
+    <li><a href="#" aria-label="LINE"><img src="images/LINE.png" alt=""></a></li>
+    <li><a href="#" aria-label="YouTube"><img src="images/youtube.png" alt=""></a></li>
+    <li><a href="#" aria-label="Facebook"><img src="images/Facebook.png" alt=""></a></li>
+  </ul>
+  <ul class="footer__links">
+    <li><a href="index.html#guide">ご利用案内</a></li><li><a href="index.html#about">動物園について</a></li><li><a href="index.html#events">ふれあい・イベント</a></li>
+    <li><a href="animals.html">動物を知る</a></li><li><a href="#">運営会社</a></li><li><a href="#">プライバシーポリシー</a></li>
+    <li><a href="#">採用情報</a></li><li><a href="#">団体・法人のお客様へ</a></li>
+  </ul>
+  <p class="footer__copy">© 2026 Mori-no Zoo (Demo). 架空の施設によるデモサイトです。</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

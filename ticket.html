@@ -1,0 +1,922 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>eチケット購入 | もりのどうぶつ園</title>
+  <meta name="description" content="もりのどうぶつ園の公式WEB eチケット購入ページです。事前にチケットを購入して当日はスムーズにご入園いただけます。">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Zen+Maru+Gothic:wght@500;700;900&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            zoo: {
+              green: '#2e8b57',
+              lightgreen: '#3fa66a',
+              softbg: '#f3f8f4',
+              accent: '#f58220',
+              cream: '#fcfbf7',
+              dark: '#2c3e35',
+              gray: '#718096'
+            }
+          },
+          fontFamily: {
+            sans: ['"Zen Maru Gothic"', 'sans-serif'],
+            poppins: ['Poppins', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #fbf9f4;
+      color: #2c3e35;
+      font-family: 'Zen Maru Gothic', sans-serif;
+    }
+    
+    /* Header & Navigation Styles matching index.html */
+    .notice-bar {
+      background: linear-gradient(90deg, #2e8b57, #3fa66a);
+    }
+    
+    .btn-pill {
+      border-radius: 9999px;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .btn-pill:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(46, 139, 87, 0.25);
+    }
+    .btn-pill:active {
+      transform: translateY(0);
+    }
+
+    /* Ticket Card styling */
+    .ticket-card {
+      background: #ffffff;
+      border: 2px solid #eef3ed;
+      border-radius: 1.25rem;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .ticket-card:focus-within, .ticket-card:hover {
+      border-color: #3fa66a;
+      box-shadow: 0 10px 25px -5px rgba(46, 139, 87, 0.1);
+    }
+
+    /* Counter buttons */
+    .cnt-btn {
+      width: 2.75rem;
+      height: 2.75rem;
+      border-radius: 9999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.25rem;
+      transition: all 0.15s ease;
+    }
+
+    /* Step indicator active styles */
+    .step-item.active .step-num {
+      background-color: #2e8b57;
+      color: #ffffff;
+      border-color: #2e8b57;
+    }
+    .step-item.active .step-text {
+      color: #2e8b57;
+      font-weight: 700;
+    }
+    .step-item.completed .step-num {
+      background-color: #3fa66a;
+      color: #ffffff;
+      border-color: #3fa66a;
+    }
+
+    /* Accordion transitions */
+    .acc-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s cubic-bezier(0, 1, 0, 1);
+    }
+    .acc-content.open {
+      max-height: 500px;
+      transition: max-height 0.3s ease-in-out;
+    }
+
+    /* Animated ticket stub tear effect */
+    .ticket-stub {
+      background-image: radial-gradient(circle at 0 50%, transparent 12px, #ffffff 13px), radial-gradient(circle at 100% 50%, transparent 12px, #ffffff 13px);
+      background-position: 0 0, 0 0;
+      background-size: 100% 100%;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between antialiased">
+
+  <!-- お知らせバー -->
+  <div class="notice-bar text-white text-xs sm:text-sm py-2 px-4 text-center font-medium shadow-sm">
+    <span class="inline-block bg-white/20 rounded-full px-2 py-0.5 mr-2 text-xs">i</span>
+    本日は窓口の混雑が予想されます。事前に購入できるWEB eチケットが便利です！
+  </div>
+
+  <!-- ヘッダー -->
+  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-emerald-100 shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3 group" aria-label="もりのどうぶつ園 トップへ">
+        <svg class="w-10 h-10 transition-transform group-hover:scale-105" viewBox="0 0 48 48" aria-hidden="true">
+          <circle cx="24" cy="18" r="13" fill="#2e8b57"/>
+          <circle cx="14" cy="22" r="9" fill="#3fa66a"/>
+          <circle cx="34" cy="22" r="9" fill="#3fa66a"/>
+          <rect x="21" y="26" width="6" height="16" rx="3" fill="#7a5230"/>
+        </svg>
+        <span class="flex flex-col">
+          <strong class="text-lg font-bold text-zoo-dark leading-tight group-hover:text-zoo-green transition-colors">もりのどうぶつ園</strong>
+          <small class="text-xs font-poppins text-gray-500 font-semibold tracking-wider">Mori-no Zoo (Demo)</small>
+        </span>
+      </a>
+
+      <!-- ナビゲーションリンク -->
+      <nav class="hidden md:flex items-center space-x-6 text-sm font-bold text-gray-700">
+        <a href="index.html#guide" class="hover:text-zoo-green transition-colors">ご利用案内</a>
+        <a href="index.html#about" class="hover:text-zoo-green transition-colors">動物園について</a>
+        <a href="index.html#events" class="hover:text-zoo-green transition-colors">ふれあい・イベント</a>
+        <a href="animals.html" class="hover:text-zoo-green transition-colors">動物を知る</a>
+        <a href="index.html#faq" class="hover:text-zoo-green transition-colors">よくある質問</a>
+      </nav>
+
+      <a href="index.html" class="inline-flex items-center text-xs sm:text-sm font-bold text-zoo-green bg-emerald-50 hover:bg-emerald-100 px-4 py-2 rounded-full transition-all">
+        ← トップページに戻る
+      </a>
+    </div>
+  </header>
+
+  <!-- メインコンテンツ -->
+  <main class="flex-grow max-w-4xl w-full mx-auto px-4 py-8">
+    
+    <!-- ページタイトル & ステップインジケーター -->
+    <section class="mb-8 text-center">
+      <span class="inline-block bg-zoo-softbg text-zoo-green font-bold text-xs px-3 py-1 rounded-full mb-2">公式オンラインチケット</span>
+      <h1 class="text-2xl sm:text-3xl font-black text-zoo-dark mb-6">eチケットWEB購入</h1>
+
+      <!-- ステップバー -->
+      <div class="flex items-center justify-center max-w-xl mx-auto px-2">
+        <!-- Step 1 -->
+        <div id="step-indicator-1" class="step-item active flex flex-col items-center flex-1">
+          <div class="step-num w-9 h-9 rounded-full border-2 border-gray-300 bg-white text-gray-500 font-bold flex items-center justify-center text-sm mb-1 transition-colors">1</div>
+          <span class="step-text text-xs text-gray-500 text-center font-medium">日付・チケット</span>
+        </div>
+        
+        <div class="h-0.5 bg-gray-200 flex-1 -mt-4 mx-1"></div>
+
+        <!-- Step 2 -->
+        <div id="step-indicator-2" class="step-item flex flex-col items-center flex-1">
+          <div class="step-num w-9 h-9 rounded-full border-2 border-gray-300 bg-white text-gray-500 font-bold flex items-center justify-center text-sm mb-1 transition-colors">2</div>
+          <span class="step-text text-xs text-gray-500 text-center font-medium">お客様情報</span>
+        </div>
+
+        <div class="h-0.5 bg-gray-200 flex-1 -mt-4 mx-1"></div>
+
+        <!-- Step 3 -->
+        <div id="step-indicator-3" class="step-item flex flex-col items-center flex-1">
+          <div class="step-num w-9 h-9 rounded-full border-2 border-gray-300 bg-white text-gray-500 font-bold flex items-center justify-center text-sm mb-1 transition-colors">3</div>
+          <span class="step-text text-xs text-gray-500 text-center font-medium">購入完了</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEP 1: 日付 & チケット選択 -->
+    <section id="step-1" class="space-y-6">
+      <!-- 1. 日付 & 時間帯選択 -->
+      <div class="bg-white p-6 rounded-2xl shadow-sm border border-emerald-100">
+        <h2 class="text-lg font-bold text-zoo-dark flex items-center gap-2 mb-4 border-b border-gray-100 pb-3">
+          <span class="bg-zoo-green text-white w-6 h-6 rounded-full flex items-center justify-center text-xs">1</span>
+          ご来園日と入場希望時間帯の選択
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- 来園日選択 -->
+          <div>
+            <label for="visit-date" class="block text-sm font-bold text-gray-700 mb-2">来園日を選択 <span class="text-red-500 text-xs">*</span></label>
+            <input type="date" id="visit-date" class="w-full p-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-zoo-green focus:border-zoo-green outline-none font-bold text-gray-700">
+            <p class="text-xs text-amber-700 mt-2 font-medium bg-amber-50 p-2 rounded-lg border border-amber-200">
+              ⚠️ <strong>休園日：毎週火曜日</strong>（祝日の場合は翌日）。当日窓口での引き換え不要でそのままご入場になれます。
+            </p>
+            <div id="tuesday-warning" class="hidden mt-2 p-3 bg-red-100 border-l-4 border-red-500 text-red-700 text-xs font-bold rounded">
+              火曜日は休園日です。別の日付を選択してください。
+            </div>
+          </div>
+
+          <!-- 時間帯選択 -->
+          <div>
+            <label class="block text-sm font-bold text-gray-700 mb-2">ご入場枠（目安） <span class="text-red-500 text-xs">*</span></label>
+            <div class="grid grid-cols-2 gap-2" id="time-slots">
+              <label class="border border-gray-200 rounded-xl p-2.5 text-center cursor-pointer hover:border-zoo-green transition-all slot-option bg-emerald-50 border-zoo-green">
+                <input type="radio" name="time-slot" value="09:00〜11:00" checked class="hidden">
+                <span class="block text-xs text-gray-500">午前</span>
+                <span class="text-sm font-bold text-zoo-dark">09:00 〜 11:00</span>
+              </label>
+              <label class="border border-gray-200 rounded-xl p-2.5 text-center cursor-pointer hover:border-zoo-green transition-all slot-option">
+                <input type="radio" name="time-slot" value="11:00〜13:00" class="hidden">
+                <span class="block text-xs text-gray-500">昼前後</span>
+                <span class="text-sm font-bold text-zoo-dark">11:00 〜 13:00</span>
+              </label>
+              <label class="border border-gray-200 rounded-xl p-2.5 text-center cursor-pointer hover:border-zoo-green transition-all slot-option">
+                <input type="radio" name="time-slot" value="13:00〜15:00" class="hidden">
+                <span class="block text-xs text-gray-500">午後</span>
+                <span class="text-sm font-bold text-zoo-dark">13:00 〜 15:00</span>
+              </label>
+              <label class="border border-gray-200 rounded-xl p-2.5 text-center cursor-pointer hover:border-zoo-green transition-all slot-option">
+                <input type="radio" name="time-slot" value="15:00〜16:30" class="hidden">
+                <span class="block text-xs text-gray-500">夕方（最終受付16:30）</span>
+                <span class="text-sm font-bold text-zoo-dark">15:00 〜 16:30</span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. 券種 & 枚数選択 -->
+      <div class="bg-white p-6 rounded-2xl shadow-sm border border-emerald-100">
+        <h2 class="text-lg font-bold text-zoo-dark flex items-center justify-between mb-4 border-b border-gray-100 pb-3">
+          <span class="flex items-center gap-2">
+            <span class="bg-zoo-green text-white w-6 h-6 rounded-full flex items-center justify-center text-xs">2</span>
+            チケット枚数の選択
+          </span>
+          <span class="text-xs text-gray-500 font-normal">※表示価格は税込価格です</span>
+        </h2>
+
+        <div class="space-y-4">
+          <!-- 大人 -->
+          <div class="ticket-card p-4 flex items-center justify-between">
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="text-base font-bold text-zoo-dark">大人（高校生以上）</span>
+                <span class="bg-emerald-100 text-zoo-green text-xs px-2 py-0.5 rounded font-bold">入園券</span>
+              </div>
+              <p class="text-sm text-gray-500">16歳以上の一般入園チケット</p>
+              <p class="text-lg font-black text-zoo-green mt-1">600円 <span class="text-xs font-normal text-gray-500">/ 1名</span></p>
+            </div>
+            <div class="flex items-center gap-3">
+              <button type="button" class="cnt-btn bg-gray-100 text-gray-600 hover:bg-gray-200 active:scale-95" onclick="updateQty('adult', -1)">-</button>
+              <span id="qty-adult" class="text-xl font-bold w-6 text-center text-zoo-dark">1</span>
+              <button type="button" class="cnt-btn bg-zoo-green text-white hover:bg-zoo-lightgreen active:scale-95" onclick="updateQty('adult', 1)">+</button>
+            </div>
+          </div>
+
+          <!-- シニア -->
+          <div class="ticket-card p-4 flex items-center justify-between">
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="text-base font-bold text-zoo-dark">65歳以上（シニア）</span>
+                <span class="bg-emerald-100 text-zoo-green text-xs px-2 py-0.5 rounded font-bold">割引入園券</span>
+              </div>
+              <p class="text-sm text-gray-500">ご入園時に年齢証明をご提示いただく場合があります</p>
+              <p class="text-lg font-black text-zoo-green mt-1">300円 <span class="text-xs font-normal text-gray-500">/ 1名</span></p>
+            </div>
+            <div class="flex items-center gap-3">
+              <button type="button" class="cnt-btn bg-gray-100 text-gray-600 hover:bg-gray-200 active:scale-95" onclick="updateQty('senior', -1)">-</button>
+              <span id="qty-senior" class="text-xl font-bold w-6 text-center text-zoo-dark">0</span>
+              <button type="button" class="cnt-btn bg-zoo-green text-white hover:bg-zoo-lightgreen active:scale-95" onclick="updateQty('senior', 1)">+</button>
+            </div>
+          </div>
+
+          <!-- 中学生以下 -->
+          <div class="ticket-card p-4 flex items-center justify-between">
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="text-base font-bold text-zoo-dark">中学生以下・未就学児</span>
+                <span class="bg-orange-100 text-zoo-accent text-xs px-2 py-0.5 rounded font-bold">無料</span>
+              </div>
+              <p class="text-sm text-gray-500">中学生、小学生、幼児・乳幼児（0歳〜）</p>
+              <p class="text-lg font-black text-zoo-accent mt-1">無料 (0円)</p>
+            </div>
+            <div class="flex items-center gap-3">
+              <button type="button" class="cnt-btn bg-gray-100 text-gray-600 hover:bg-gray-200 active:scale-95" onclick="updateQty('junior', -1)">-</button>
+              <span id="qty-junior" class="text-xl font-bold w-6 text-center text-zoo-dark">0</span>
+              <button type="button" class="cnt-btn bg-zoo-green text-white hover:bg-zoo-lightgreen active:scale-95" onclick="updateQty('junior', 1)">+</button>
+            </div>
+          </div>
+
+          <!-- オプション体験チケット -->
+          <div class="bg-amber-50/70 border-2 border-dashed border-amber-200 rounded-2xl p-4 mt-4">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="text-lg">🦒</span>
+              <span class="font-bold text-amber-900">限定オプション体験</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-sm font-bold text-amber-950">キリンのエサやり体験整理券</p>
+                <p class="text-xs text-amber-800">1日先着100名様限定・14:30回</p>
+                <p class="text-base font-black text-amber-900 mt-0.5">300円 <span class="text-xs font-normal text-amber-700">/ 1人</span></p>
+              </div>
+              <div class="flex items-center gap-3">
+                <button type="button" class="cnt-btn bg-white border border-amber-300 text-amber-800 hover:bg-amber-100 active:scale-95" onclick="updateQty('giraffe', -1)">-</button>
+                <span id="qty-giraffe" class="text-xl font-bold w-6 text-center text-amber-900">0</span>
+                <button type="button" class="cnt-btn bg-amber-500 text-white hover:bg-amber-600 active:scale-95" onclick="updateQty('giraffe', 1)">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 合計計算と次へボタン -->
+      <div class="bg-white p-6 rounded-2xl shadow-md border border-emerald-200 flex flex-col sm:flex-row items-center justify-between gap-4 sticky bottom-4 z-20">
+        <div>
+          <span class="text-xs font-bold text-gray-500 block">選択合計枚数: <span id="summary-count" class="text-zoo-dark font-black">1</span> 枚</span>
+          <div class="flex items-baseline gap-1">
+            <span class="text-xs text-gray-500 font-bold">お支払い合計:</span>
+            <span id="total-price" class="text-3xl font-black text-zoo-green">600</span>
+            <span class="text-sm font-bold text-zoo-green">円</span>
+          </div>
+        </div>
+
+        <button type="button" id="btn-to-step2" onclick="goToStep(2)" class="w-full sm:w-auto px-8 py-4 bg-zoo-green hover:bg-zoo-lightgreen text-white font-bold text-base rounded-full shadow-lg transition-all btn-pill flex items-center justify-center gap-2">
+          お客様情報の入力へ進む →
+        </button>
+      </div>
+    </section>
+
+    <!-- STEP 2: お客様情報入力 & 決済選択 -->
+    <section id="step-2" class="hidden space-y-6">
+      <div class="bg-white p-6 rounded-2xl shadow-sm border border-emerald-100">
+        <h2 class="text-lg font-bold text-zoo-dark flex items-center gap-2 mb-4 border-b border-gray-100 pb-3">
+          <span class="bg-zoo-green text-white w-6 h-6 rounded-full flex items-center justify-center text-xs">3</span>
+          ご購入者様情報の入力
+        </h2>
+
+        <form id="customer-form" class="space-y-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label for="cust-name" class="block text-sm font-bold text-gray-700 mb-1">お名前 <span class="text-red-500 text-xs">*</span></label>
+              <input type="text" id="cust-name" required placeholder="例：森野 太郎" class="w-full p-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-zoo-green outline-none text-sm">
+            </div>
+            <div>
+              <label for="cust-kana" class="block text-sm font-bold text-gray-700 mb-1">フリガナ <span class="text-red-500 text-xs">*</span></label>
+              <input type="text" id="cust-kana" required placeholder="例：モリノ タロウ" class="w-full p-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-zoo-green outline-none text-sm">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label for="cust-email" class="block text-sm font-bold text-gray-700 mb-1">メールアドレス <span class="text-red-500 text-xs">*</span></label>
+              <input type="email" id="cust-email" required placeholder="ticket@example.com" class="w-full p-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-zoo-green outline-none text-sm">
+              <p class="text-xs text-gray-400 mt-1">※QRコード付eチケットを送付いたします</p>
+            </div>
+            <div>
+              <label for="cust-phone" class="block text-sm font-bold text-gray-700 mb-1">電話番号 <span class="text-red-500 text-xs">*</span></label>
+              <input type="tel" id="cust-phone" required placeholder="09012345678" class="w-full p-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-zoo-green outline-none text-sm">
+            </div>
+          </div>
+
+          <!-- 決済方法選択 -->
+          <div class="pt-4 border-t border-gray-100">
+            <label class="block text-sm font-bold text-gray-700 mb-3">お支払い方法を選択 <span class="text-red-500 text-xs">*</span></label>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <label class="border-2 border-zoo-green bg-emerald-50/50 rounded-xl p-4 cursor-pointer flex flex-col justify-between hover:bg-emerald-50 transition-all pay-option">
+                <div class="flex items-center justify-between mb-2">
+                  <span class="font-bold text-sm text-zoo-dark">クレジットカード</span>
+                  <input type="radio" name="pay-method" value="クレジットカード" checked class="accent-zoo-green">
+                </div>
+                <div class="text-xs text-gray-500">VISA / Mastercard / JCB / Amex</div>
+              </label>
+
+              <label class="border-2 border-gray-200 rounded-xl p-4 cursor-pointer flex flex-col justify-between hover:border-zoo-green transition-all pay-option">
+                <div class="flex items-center justify-between mb-2">
+                  <span class="font-bold text-sm text-zoo-dark">PayPay / スマホ決済</span>
+                  <input type="radio" name="pay-method" value="PayPay" class="accent-zoo-green">
+                </div>
+                <div class="text-xs text-gray-500">アプリで速やかにお支払い</div>
+              </label>
+
+              <label class="border-2 border-gray-200 rounded-xl p-4 cursor-pointer flex flex-col justify-between hover:border-zoo-green transition-all pay-option">
+                <div class="flex items-center justify-between mb-2">
+                  <span class="font-bold text-sm text-zoo-dark">コンビニ支払い</span>
+                  <input type="radio" name="pay-method" value="コンビニ支払い" class="accent-zoo-green">
+                </div>
+                <div class="text-xs text-gray-500">ファミリーマート / セブン</div>
+              </label>
+            </div>
+          </div>
+
+          <!-- クレジットカード入力欄（モック） -->
+          <div id="credit-card-inputs" class="bg-gray-50 p-4 rounded-xl border border-gray-200 space-y-3 mt-4">
+            <p class="text-xs font-bold text-gray-600">※これはデモサイトです。実際の決済処理は行われません。（任意の数値で可）</p>
+            <div>
+              <label class="block text-xs font-bold text-gray-600 mb-1">カード番号</label>
+              <input type="text" placeholder="4532 0000 0000 0000" maxlength="19" value="4000 1234 5678 9010" class="w-full p-2.5 rounded-lg border border-gray-300 text-sm font-mono bg-white">
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label class="block text-xs font-bold text-gray-600 mb-1">有効期限</label>
+                <input type="text" placeholder="MM/YY" value="12/28" class="w-full p-2.5 rounded-lg border border-gray-300 text-sm font-mono bg-white">
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-gray-600 mb-1">セキュリティコード</label>
+                <input type="text" placeholder="CVC" value="123" maxlength="4" class="w-full p-2.5 rounded-lg border border-gray-300 text-sm font-mono bg-white">
+              </div>
+            </div>
+          </div>
+
+          <!-- 利用規約同意 -->
+          <div class="pt-2">
+            <label class="flex items-start gap-2 cursor-pointer text-xs sm:text-sm text-gray-700">
+              <input type="checkbox" id="terms-check" class="mt-1 rounded accent-zoo-green" required>
+              <span><a href="#" class="text-zoo-green underline font-bold" onclick="alert('【利用規約デモ】\n・購入後の自己都合によるキャンセルの返金はできません。\n・入園時は本画面のQRコードまたは印刷した用紙をご提示ください。')">利用規約</a>および<a href="#" class="text-zoo-green underline font-bold" onclick="alert('【プライバシーポリシー】\nご入力いただいた個人情報はチケット発行および連絡のみに使用されます。')">プライバシーポリシー</a>に同意して購入します。</span>
+            </label>
+          </div>
+        </form>
+      </div>
+
+      <!-- 確認用サマリーとアクションボタン -->
+      <div class="bg-white p-6 rounded-2xl shadow-sm border border-emerald-100 space-y-4">
+        <h3 class="font-bold text-gray-700 text-sm border-b border-gray-100 pb-2">ご予約内容の確認</h3>
+        <div class="text-sm space-y-1.5 text-gray-600">
+          <div class="flex justify-between"><span>来園日時:</span> <strong id="confirm-datetime" class="text-zoo-dark">2026年11月22日 09:00〜11:00</strong></div>
+          <div class="flex justify-between"><span>内訳:</span> <span id="confirm-breakdown" class="text-zoo-dark font-medium">大人 1枚</span></div>
+          <div class="flex justify-between border-t border-dashed border-gray-200 pt-2 text-base font-bold text-zoo-dark">
+            <span>最終支払金額:</span>
+            <span class="text-xl font-black text-zoo-green"><span id="confirm-total">600</span>円</span>
+          </div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row items-center gap-3 pt-2">
+          <button type="button" onclick="goToStep(1)" class="w-full sm:w-auto px-6 py-3.5 border-2 border-gray-300 text-gray-600 font-bold text-sm rounded-full hover:bg-gray-100 transition-all">
+            ← チケット選択に戻る
+          </button>
+          <button type="button" onclick="completePurchase()" class="w-full sm:flex-1 py-4 bg-zoo-accent hover:bg-orange-600 text-white font-bold text-base rounded-full shadow-lg transition-all btn-pill flex items-center justify-center gap-2">
+            🎫 購入を確定してeチケットを発行する
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEP 3: 購入完了 & デジタルeチケット発行 -->
+    <section id="step-3" class="hidden space-y-6">
+      <div class="bg-emerald-50 border border-emerald-200 p-6 rounded-2xl text-center space-y-2">
+        <div class="w-16 h-16 bg-zoo-green text-white rounded-full flex items-center justify-center mx-auto text-3xl shadow-lg">✓</div>
+        <h2 class="text-2xl font-black text-zoo-dark">ご購入が完了いたしました！</h2>
+        <p class="text-sm text-gray-600">ご登録のメールアドレスにも確認メールとeチケットURLをお送りしました。</p>
+      </div>
+
+      <!-- デジタルeチケットカード -->
+      <div class="max-w-md mx-auto bg-white rounded-3xl shadow-2xl border-2 border-emerald-200 overflow-hidden relative">
+        <!-- チケットヘッダー -->
+        <div class="bg-gradient-to-r from-zoo-green to-zoo-lightgreen p-5 text-white flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <svg class="w-8 h-8 fill-current" viewBox="0 0 48 48">
+              <circle cx="24" cy="18" r="13" fill="#ffffff" fill-opacity="0.9"/>
+              <circle cx="14" cy="22" r="9" fill="#ffffff" fill-opacity="0.7"/>
+              <circle cx="34" cy="22" r="9" fill="#ffffff" fill-opacity="0.7"/>
+              <rect x="21" y="26" width="6" height="16" rx="3" fill="#ffffff" fill-opacity="0.8"/>
+            </svg>
+            <div>
+              <span class="text-xs font-poppins tracking-wider opacity-80">MORI-NO ZOO OFFICIAL</span>
+              <h3 class="font-black text-lg leading-tight">もりのどうぶつ園 eチケット</h3>
+            </div>
+          </div>
+          <span class="bg-white/20 text-xs px-2.5 py-1 rounded-full font-bold">即時利用可</span>
+        </div>
+
+        <!-- チケット本体 -->
+        <div class="p-6 space-y-5 text-center">
+          <!-- QRコード表示 -->
+          <div class="bg-gray-50 p-4 rounded-2xl border border-gray-200 inline-block shadow-inner">
+            <canvas id="qr-canvas" class="w-44 h-44 mx-auto rounded-lg"></canvas>
+            <p class="text-[11px] font-mono text-gray-500 mt-2">チケットID: <strong id="ticket-id-display" class="text-zoo-dark">MZ-2026-88492</strong></p>
+          </div>
+
+          <!-- チケット情報 -->
+          <div class="bg-emerald-50/60 p-4 rounded-xl border border-emerald-100 text-left space-y-2 text-sm">
+            <div class="flex justify-between border-b border-emerald-100 pb-1.5">
+              <span class="text-gray-500">ご来園予定日</span>
+              <strong id="ticket-date-display" class="text-zoo-dark font-bold">2026年11月22日(日)</strong>
+            </div>
+            <div class="flex justify-between border-b border-emerald-100 pb-1.5">
+              <span class="text-gray-500">ご入場枠</span>
+              <strong id="ticket-time-display" class="text-zoo-dark font-bold">09:00 〜 11:00</strong>
+            </div>
+            <div class="flex justify-between border-b border-emerald-100 pb-1.5">
+              <span class="text-gray-500">購入枚数内訳</span>
+              <span id="ticket-breakdown-display" class="text-zoo-dark font-bold">大人 1名</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-500">ご購入者様</span>
+              <strong id="ticket-name-display" class="text-zoo-dark font-bold">森野 太郎 様</strong>
+            </div>
+          </div>
+
+          <p class="text-xs text-gray-500">※当日は正面ゲート入場機にこの画面のQRコードを直接かざしてご入場ください。</p>
+        </div>
+
+        <!-- アクションボタン -->
+        <div class="bg-gray-50 p-4 border-t border-gray-100 flex gap-3">
+          <button type="button" onclick="window.print()" class="flex-1 py-3 bg-white border border-gray-300 text-gray-700 font-bold text-xs rounded-xl hover:bg-gray-100 transition-all flex items-center justify-center gap-1">
+            🖨️ チケットを印刷 / 保存
+          </button>
+          <a href="index.html" class="flex-1 py-3 bg-zoo-green text-white font-bold text-xs rounded-xl hover:bg-zoo-lightgreen transition-all flex items-center justify-center gap-1">
+            🏠 トップへ戻る
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 注意事項 & FAQ (index.htmlとデザイン統一) -->
+    <section class="mt-16 bg-white p-6 sm:p-8 rounded-3xl border border-emerald-100 shadow-sm space-y-6">
+      <div class="text-center">
+        <h2 class="text-xl font-bold text-zoo-dark inline-block border-b-2 border-zoo-green pb-1">eチケットに関するよくある質問・ご利用案内</h2>
+      </div>
+
+      <!-- FAQ アコーディオン -->
+      <div class="space-y-3">
+        <!-- FAQ 1 -->
+        <div class="border border-gray-200 rounded-2xl overflow-hidden">
+          <button type="button" onclick="toggleFaq(this)" class="w-full p-4 text-left font-bold text-zoo-dark flex items-center justify-between bg-gray-50/50 hover:bg-emerald-50/50 transition-colors">
+            <span class="flex items-center gap-2">
+              <span class="text-zoo-green font-poppins font-black">Q.</span>
+              購入後のキャンセルや日付変更はできますか？
+            </span>
+            <span class="faq-icon text-gray-400 text-lg transition-transform">+</span>
+          </button>
+          <div class="acc-content px-4 bg-white text-xs sm:text-sm text-gray-600 leading-relaxed">
+            <div class="py-3 border-t border-gray-100">
+              ご来園前日の23:59まで、購入確認メール記載の専用マイページURLより無料での日付変更（3回まで）およびキャンセルが可能です。当日のキャンセル・返金は致しかねますのでご了承ください。
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="border border-gray-200 rounded-2xl overflow-hidden">
+          <button type="button" onclick="toggleFaq(this)" class="w-full p-4 text-left font-bold text-zoo-dark flex items-center justify-between bg-gray-50/50 hover:bg-emerald-50/50 transition-colors">
+            <span class="flex items-center gap-2">
+              <span class="text-zoo-green font-poppins font-black">Q.</span>
+              当日はどのように入場すればよいですか？
+            </span>
+            <span class="faq-icon text-gray-400 text-lg transition-transform">+</span>
+          </button>
+          <div class="acc-content px-4 bg-white text-xs sm:text-sm text-gray-600 leading-relaxed">
+            <div class="py-3 border-t border-gray-100">
+              チケット購入完了後に表示されるQRコード画面（またはプリントアウトした用紙）を、正面ゲートの自動改札機にかざすだけで並ばずにそのままご入場いただけます。
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="border border-gray-200 rounded-2xl overflow-hidden">
+          <button type="button" onclick="toggleFaq(this)" class="w-full p-4 text-left font-bold text-zoo-dark flex items-center justify-between bg-gray-50/50 hover:bg-emerald-50/50 transition-colors">
+            <span class="flex items-center gap-2">
+              <span class="text-zoo-green font-poppins font-black">Q.</span>
+              障害者割引や団体割引チケットはWEBで購入できますか？
+            </span>
+            <span class="faq-icon text-gray-400 text-lg transition-transform">+</span>
+          </button>
+          <div class="acc-content px-4 bg-white text-xs sm:text-sm text-gray-600 leading-relaxed">
+            <div class="py-3 border-t border-gray-100">
+              各種受給者証をお持ちの方や、15名以上の団体のお客様は現地チケット窓口でのご購入となります。直接窓口までお越しください（WEB事前予約なしでも割引適用されます）。
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- フッター (index.htmlと完全にデザイン一致) -->
+  <footer class="bg-zoo-dark text-white pt-12 pb-8 mt-16 border-t border-emerald-900">
+    <div class="max-w-4xl mx-auto px-4 text-center space-y-6">
+      <p class="text-sm font-bold text-emerald-300">フォローして動物園とつながろう！</p>
+      
+      <!-- SNS アイコンリンク -->
+      <div class="flex items-center justify-center gap-4">
+        <a href="#" aria-label="X" class="w-10 h-10 rounded-full bg-white/10 hover:bg-zoo-green flex items-center justify-center text-base transition-colors">𝕏</a>
+        <a href="#" aria-label="Instagram" class="w-10 h-10 rounded-full bg-white/10 hover:bg-zoo-green flex items-center justify-center text-base transition-colors">📷</a>
+        <a href="#" aria-label="LINE" class="w-10 h-10 rounded-full bg-white/10 hover:bg-zoo-green flex items-center justify-center text-base transition-colors">💬</a>
+        <a href="#" aria-label="YouTube" class="w-10 h-10 rounded-full bg-white/10 hover:bg-zoo-green flex items-center justify-center text-base transition-colors">▶</a>
+      </div>
+
+      <!-- フッターナビゲーション -->
+      <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs text-emerald-100/80 pt-4 border-t border-white/10">
+        <a href="index.html#guide" class="hover:text-white transition-colors">ご利用案内</a>
+        <a href="index.html#about" class="hover:text-white transition-colors">動物園について</a>
+        <a href="index.html#events" class="hover:text-white transition-colors">ふれあい・イベント</a>
+        <a href="animals.html" class="hover:text-white transition-colors">動物を知る</a>
+        <a href="#" class="hover:text-white transition-colors">運営会社</a>
+        <a href="#" class="hover:text-white transition-colors">プライバシーポリシー</a>
+        <a href="#" class="hover:text-white transition-colors">特定商取引法に基づく表記</a>
+      </div>
+
+      <p class="text-xs text-gray-400 pt-2 font-poppins">© 2026 Mori-no Zoo (Demo). 架空の施設によるデモサイトです。</p>
+    </div>
+  </footer>
+
+  <!-- スクリプト制御 -->
+  <script>
+    // チケットデータ状態管理
+    const state = {
+      quantities: {
+        adult: 1,   // 600円
+        senior: 0,  // 300円
+        junior: 0,  // 0円
+        giraffe: 0  // 300円
+      },
+      prices: {
+        adult: 600,
+        senior: 300,
+        junior: 0,
+        giraffe: 300
+      },
+      date: '',
+      timeSlot: '09:00〜11:00',
+      totalPrice: 600,
+      totalCount: 1
+    };
+
+    // 初期化処理
+    window.addEventListener('DOMContentLoaded', () => {
+      // 明日をデフォルト来園日に設定
+      const dateInput = document.getElementById('visit-date');
+      const tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      
+      // 火曜日の場合は翌日（水曜）へスライド
+      if (tomorrow.getDay() === 2) {
+        tomorrow.setDate(tomorrow.getDate() + 1);
+      }
+      
+      const yyyy = tomorrow.getFullYear();
+      const mm = String(tomorrow.getMonth() + 1).padStart(2, '0');
+      const dd = String(tomorrow.getDate()).padStart(2, '0');
+      dateInput.value = `${yyyy}-${mm}-${dd}`;
+      
+      // 最小可能日付を本日に設定
+      const today = new Date();
+      const tYyyy = today.getFullYear();
+      const tMm = String(today.getMonth() + 1).padStart(2, '0');
+      const tDd = String(today.getDate()).padStart(2, '0');
+      dateInput.min = `${tYyyy}-${tMm}-${tDd}`;
+
+      // イベントリスナー登録
+      dateInput.addEventListener('change', checkTuesday);
+      
+      // 時間帯ラジオ変更
+      document.querySelectorAll('input[name="time-slot"]').forEach(radio => {
+        radio.addEventListener('change', (e) => {
+          state.timeSlot = e.target.value;
+          document.querySelectorAll('.slot-option').forEach(el => {
+            el.classList.remove('bg-emerald-50', 'border-zoo-green');
+          });
+          e.target.closest('.slot-option').classList.add('bg-emerald-50', 'border-zoo-green');
+        });
+      });
+
+      // 支払い方法ラジオ変更
+      document.querySelectorAll('input[name="pay-method"]').forEach(radio => {
+        radio.addEventListener('change', (e) => {
+          document.querySelectorAll('.pay-option').forEach(el => {
+            el.classList.remove('border-zoo-green', 'bg-emerald-50/50');
+            el.classList.add('border-gray-200');
+          });
+          e.target.closest('.pay-option').classList.add('border-zoo-green', 'bg-emerald-50/50');
+
+          const creditBlock = document.getElementById('credit-card-inputs');
+          if (e.target.value === 'クレジットカード') {
+            creditBlock.classList.remove('hidden');
+          } else {
+            creditBlock.classList.add('hidden');
+          }
+        });
+      });
+
+      calculateTotals();
+    });
+
+    // 火曜日チェック
+    function checkTuesday() {
+      const dateVal = document.getElementById('visit-date').value;
+      if (!dateVal) return;
+      const selected = new Date(dateVal);
+      const isTuesday = selected.getDay() === 2;
+      
+      const warning = document.getElementById('tuesday-warning');
+      const btnNext = document.getElementById('btn-to-step2');
+      
+      if (isTuesday) {
+        warning.classList.remove('hidden');
+        btnNext.disabled = true;
+        btnNext.classList.add('opacity-50', 'cursor-not-allowed');
+      } else {
+        warning.classList.add('hidden');
+        btnNext.disabled = false;
+        btnNext.classList.remove('opacity-50', 'cursor-not-allowed');
+      }
+    }
+
+    // 枚数変更処理
+    function updateQty(type, change) {
+      const current = state.quantities[type];
+      const updated = Math.max(0, current + change);
+      state.quantities[type] = updated;
+      
+      document.getElementById(`qty-${type}`).textContent = updated;
+      calculateTotals();
+    }
+
+    // 合計計算
+    function calculateTotals() {
+      let total = 0;
+      let count = 0;
+
+      for (const [key, qty] of Object.entries(state.quantities)) {
+        total += qty * state.prices[key];
+        if (key !== 'giraffe') { // エサやりは入園枚数には含めない
+          count += qty;
+        }
+      }
+
+      state.totalPrice = total;
+      state.totalCount = count;
+
+      document.getElementById('summary-count').textContent = count;
+      document.getElementById('total-price').textContent = total.toLocaleString();
+
+      // 内訳テキスト生成
+      const parts = [];
+      if (state.quantities.adult > 0) parts.push(`大人 ${state.quantities.adult}名`);
+      if (state.quantities.senior > 0) parts.push(`シニア ${state.quantities.senior}名`);
+      if (state.quantities.junior > 0) parts.push(`中学生以下 ${state.quantities.junior}名`);
+      if (state.quantities.giraffe > 0) parts.push(`キリンエサやり ${state.quantities.giraffe}枚`);
+
+      const breakdownText = parts.length > 0 ? parts.join(', ') : '選択なし';
+      document.getElementById('confirm-breakdown').textContent = breakdownText;
+      document.getElementById('confirm-total').textContent = total.toLocaleString();
+
+      // 来園日時フォーマット
+      const dateVal = document.getElementById('visit-date').value;
+      if (dateVal) {
+        const d = new Date(dateVal);
+        const dayOfWeek = ['日', '月', '火', '水', '木', '金', '土'][d.getDay()];
+        const formattedDate = `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日(${dayOfWeek})`;
+        document.getElementById('confirm-datetime').textContent = `${formattedDate} ${state.timeSlot}`;
+      }
+    }
+
+    // ステップ切り替え処理
+    function goToStep(stepNum) {
+      if (stepNum === 2) {
+        if (state.totalCount === 0 && state.quantities.giraffe === 0) {
+          alert('少なくとも1枚以上のチケットを選択してください。');
+          return;
+        }
+        const dateVal = document.getElementById('visit-date').value;
+        if (!dateVal) {
+          alert('来園日を選択してください。');
+          return;
+        }
+        const selected = new Date(dateVal);
+        if (selected.getDay() === 2) {
+          alert('火曜日は休園日です。別の日付を選択してください。');
+          return;
+        }
+      }
+
+      // 表示切り替え
+      document.getElementById('step-1').classList.add('hidden');
+      document.getElementById('step-2').classList.add('hidden');
+      document.getElementById('step-3').classList.add('hidden');
+
+      document.getElementById(`step-${stepNum}`).classList.remove('hidden');
+
+      // インジケーター表示更新
+      for (let i = 1; i <= 3; i++) {
+        const ind = document.getElementById(`step-indicator-${i}`);
+        ind.classList.remove('active', 'completed');
+        if (i < stepNum) {
+          ind.classList.add('completed');
+        } else if (i === stepNum) {
+          ind.classList.add('active');
+        }
+      }
+
+      window.scrollTo({ top: 150, behavior: 'smooth' });
+    }
+
+    // 購入確定処理
+    function completePurchase() {
+      const name = document.getElementById('cust-name').value.trim();
+      const kana = document.getElementById('cust-kana').value.trim();
+      const email = document.getElementById('cust-email').value.trim();
+      const phone = document.getElementById('cust-phone').value.trim();
+      const terms = document.getElementById('terms-check').checked;
+
+      if (!name || !kana || !email || !phone) {
+        alert('ご購入者様情報をすべてご入力ください。');
+        return;
+      }
+
+      if (!terms) {
+        alert('利用規約およびプライバシーポリシーへの同意が必要です。');
+        return;
+      }
+
+      // ランダムチケットID生成
+      const randomId = 'MZ-2026-' + Math.floor(10000 + Math.random() * 90000);
+      document.getElementById('ticket-id-display').textContent = randomId;
+      document.getElementById('ticket-name-display').textContent = `${name} 様`;
+
+      // 発行データ反映
+      const dateVal = document.getElementById('visit-date').value;
+      const d = new Date(dateVal);
+      const dayOfWeek = ['日', '月', '火', '水', '木', '金', '土'][d.getDay()];
+      document.getElementById('ticket-date-display').textContent = `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日(${dayOfWeek})`;
+      document.getElementById('ticket-time-display').textContent = state.timeSlot;
+
+      const parts = [];
+      if (state.quantities.adult > 0) parts.push(`大人 ${state.quantities.adult}名`);
+      if (state.quantities.senior > 0) parts.push(`シニア ${state.quantities.senior}名`);
+      if (state.quantities.junior > 0) parts.push(`中学生以下 ${state.quantities.junior}名`);
+      if (state.quantities.giraffe > 0) parts.push(`エサやり ${state.quantities.giraffe}枚`);
+      document.getElementById('ticket-breakdown-display').textContent = parts.join(', ');
+
+      // 擬似QRコードを描画 (HTML5 Canvas)
+      renderDemoQRCode('qr-canvas', randomId);
+
+      goToStep(3);
+    }
+
+    // 簡易QRコード描画関数 (標準Canvas APIでリアルなQRパターンを生成)
+    function renderDemoQRCode(canvasId, text) {
+      const canvas = document.getElementById(canvasId);
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const size = 200;
+      canvas.width = size;
+      canvas.height = size;
+
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(0, 0, size, size);
+
+      ctx.fillStyle = '#2c3e35';
+      const gridSize = 25;
+      const cellSize = size / gridSize;
+
+      // 疑似ランダムパターン (決定論的)
+      let hash = 0;
+      for (let i = 0; i < text.length; i++) {
+        hash = (hash << 5) - hash + text.charCodeAt(i);
+        hash |= 0;
+      }
+
+      for (let r = 0; r < gridSize; r++) {
+        for (let c = 0; c < gridSize; c++) {
+          // 四隅の位置検出パターン領域を除外
+          if ((r < 7 && c < 7) || (r < 7 && c >= gridSize - 7) || (r >= gridSize - 7 && c < 7)) {
+            continue;
+          }
+          const val = Math.abs(Math.sin(hash * 0.1 + r * 13 + c * 37));
+          if (val > 0.45) {
+            ctx.fillRect(c * cellSize, r * cellSize, cellSize - 0.5, cellSize - 0.5);
+          }
+        }
+      }
+
+      // 位置検出パターン (Finder Patterns)
+      function drawFinder(x, y) {
+        ctx.fillStyle = '#2c3e35';
+        ctx.fillRect(x * cellSize, y * cellSize, 7 * cellSize, 7 * cellSize);
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect((x + 1) * cellSize, (y + 1) * cellSize, 5 * cellSize, 5 * cellSize);
+        ctx.fillStyle = '#2c3e35';
+        ctx.fillRect((x + 2) * cellSize, (y + 2) * cellSize, 3 * cellSize, 3 * cellSize);
+      }
+
+      drawFinder(0, 0);
+      drawFinder(gridSize - 7, 0);
+      drawFinder(0, gridSize - 7);
+    }
+
+    // FAQ アコーディオン制御
+    function toggleFaq(button) {
+      const content = button.nextElementSibling;
+      const icon = button.querySelector('.faq-icon');
+
+      const isOpen = content.classList.contains('open');
+
+      if (isOpen) {
+        content.classList.remove('open');
+        icon.textContent = '+';
+        icon.style.transform = 'rotate(0deg)';
+      } else {
+        content.classList.add('open');
+        icon.textContent = '−';
+        icon.style.transform = 'rotate(180deg)';
+      }
+    }
+  </script>
+</body>
+</html>

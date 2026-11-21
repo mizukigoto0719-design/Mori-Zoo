@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>もりのどうぶつ園（デモサイト）</title>
+<meta name="description" content="Vanilla JSとモダンCSSで作った動物園サイトのデモ。架空の施設です。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- お知らせバー -->
+<div class="notice" role="note">
+  <span class="notice__icon" aria-hidden="true">i</span>
+  <p>本日は団体のお客様が多くご来園の予定です。事前購入のeチケットがおすすめです。</p>
+</div>
+
+<!-- ヘッダー -->
+<header class="header" id="top">
+  <a class="logo" href="#top" aria-label="もりのどうぶつ園 トップへ">
+    <svg class="logo__mark" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="18" r="13" fill="#2e8b57"/><circle cx="14" cy="22" r="9" fill="#3fa66a"/><circle cx="34" cy="22" r="9" fill="#3fa66a"/><rect x="21" y="26" width="6" height="16" rx="3" fill="#7a5230"/></svg>
+    <span class="logo__text"><strong>もりのどうぶつ園</strong><small>Mori-no Zoo (Demo)</small></span>
+  </a>
+
+  <button class="burger" id="burger" aria-expanded="false" aria-controls="gnav" aria-label="メニューを開く">
+    <span></span><span></span><span></span>
+  </button>
+
+  <nav class="gnav" id="gnav" aria-label="メインメニュー">
+    <ul>
+      <li><a href="#guide">ご利用案内</a></li>
+      <li><a href="#about">動物園について</a></li>
+      <li><a href="#events">ふれあい・イベント</a></li>
+      <li><a href="animals.html">動物を知る</a></li>
+      <li><a href="#faq">よくある質問</a></li>
+      <li><a href="#around">周辺観光</a></li>
+    </ul>
+    <a class="gnav__cta" href="ticket.html">eチケット購入</a>
+  </nav>
+</header>
+<div class="backdrop" id="navBackdrop" hidden></div>
+
+<main>
+<!-- ヒーロー（パララックス + モーションタイポ） -->
+<section class="hero" aria-label="メインビジュアル">
+  <div class="hero__bg" data-parallax="0.25">
+    <img src="images/hero.jpg" alt="キリンに手を伸ばす親子">
+  </div>
+
+  <h1 class="hero__catch" data-split data-split-now aria-label="森をあるくように出会おう">
+    <span class="line">森をあるくように</span>
+    <span class="line line--2">出会おう</span>
+  </h1>
+
+  <a class="hero__badge" href="ticket.html" data-modal="tpl-ticket">
+    <span aria-hidden="true">🎫</span> eチケット<br>発売中
+  </a>
+
+  <div class="hero__panels">
+    <div class="card status">
+      <p class="status__label"><span class="dot" aria-hidden="true"></span>本日の入園状況（窓口・WEB）
+       <p id="realtime"></p>
+      <p class="status__main"><span class="ring" aria-hidden="true"></span>入園券 販売中</p>
+      <p class="status__sub">ふれあい整理券 配布中</p>
+    </div>
+    <div class="card hours">
+      <div class="hours__cols">
+        <div>
+          <p class="hours__label">🕘 本日の開園時間</p>
+          <p class="hours__time">9:00〜17:00</p>
+          <p class="hours__note">最終入園は閉園の30分前まで</p>
+        </div>
+        <div>
+          <p class="hours__label">📅 今月の開園カレンダー</p>
+          <p class="hours__closed">休園日：火曜日</p>
+        </div>
+      </div>
+      <button class="btn btn--grad" type="button" data-modal="tpl-events">本日のイベント →</button>
+    </div>
+  </div>
+</section>
+
+<!-- クイックリンク -->
+<!-- クイックリンク -->
+<nav class="quick" id="guide" aria-label="クイックリンク">
+  <ul>
+    <li><a href="#" data-modal="tpl-ticket"><span aria-hidden="true"><img src="images/ticket.png" alt=""></span>入園料・<br>その他チケット</a></li>
+    <li><a href="#" data-modal="tpl-access"><span aria-hidden="true"><img src="images/car.png" alt=""></span>アクセス・<br>駐車場</a></li>
+    <li><a href="#" data-modal="tpl-map"><span aria-hidden="true"><img src="images/pin.png" alt=""></span>園内マップ</a></li>
+    <li><a href="#" data-modal="tpl-shop"><span aria-hidden="true"><img src="images/syokuji.png" alt=""></span>ショップ&amp;<br>レストラン</a></li>
+    <li><a href="#" data-modal="tpl-barrierfree"><span aria-hidden="true"><img src="images/kurumaisu.png" alt=""></span>バリアフリー<br>情報</a></li>
+    <li><a href="#" data-modal="tpl-baby"><span aria-hidden="true"><img src="images/honyuubinn.png" alt=""></span>ベビーカー・<br>授乳室</a></li>
+    <li><a href="#" data-modal="tpl-rules"><span aria-hidden="true"><img src="images/note.png" alt=""></span>ルールとマナー</a></li>
+    <li><a href="#faq"><span aria-hidden="true"><img src="images/hatena.png" alt=""></span>よくある質問・<br>お問い合わせ</a></li>
+  </ul>
+</nav>
+
+<!-- ピックアップ（スライドショー） -->
+<section class="pickup" id="events" aria-roledescription="carousel" aria-label="ピックアップ">
+  <div class="pickup__head">
+    <p class="pickup__sub">今イチオシ！</p>
+    <h2 class="pickup__title" data-split>PICK UP</h2>
+    <div class="slider__ctrl">
+      <button class="round" id="prev" aria-label="前へ">‹</button>
+      <button class="round" id="next" aria-label="次へ">›</button>
+      <button class="round round--sm" id="toggle" aria-label="自動再生を停止" aria-pressed="false">⏸</button>
+    </div>
+  </div>
+
+  <div class="slider" id="slider">
+    <div class="slider__viewport">
+      <ul class="slider__track" id="track">
+        <li class="slide" aria-roledescription="slide">
+          <button class="pcard pcard--orange" data-modal="tpl-giraffe">
+            <img src="images/giraffe.jpg" alt="キリン">
+            <span class="pcard__label">キリンのエサやり<br>体験<i>›</i></span>
+          </button>
+        </li>
+        <li class="slide" aria-roledescription="slide">
+          <button class="pcard pcard--green" data-modal="tpl-elephant">
+            <img src="images/elephant.jpg" alt="ゾウ">
+            <span class="pcard__label">赤ちゃんゾウ<br>公開中！<i>›</i></span>
+          </button>
+        </li>
+        <li class="slide" aria-roledescription="slide">
+          <button class="pcard pcard--blue" data-modal="tpl-guinea">
+            <img src="images/guinea.jpg" alt="モルモット">
+            <span class="pcard__label">ふれあい広場で<br>モルモットと<i>›</i></span>
+          </button>
+        </li>
+        <li class="slide" aria-roledescription="slide">
+          <button class="pcard pcard--coral" data-modal="tpl-panda">
+            <img src="images/panda.jpg" alt="レッサーパンダ">
+            <span class="pcard__label">レッサーパンダの<br>もぐもぐタイム<i>›</i></span>
+          </button>
+        </li>
+        <li class="slide" aria-roledescription="slide">
+          <button class="pcard pcard--green" data-modal="tpl-penguin">
+            <img src="images/penguin.jpg" alt="ペンギン">
+            <span class="pcard__label">ペンギンの<br>お散歩タイム<i>›</i></span>
+          </button>
+        </li>
+        <li class="slide" aria-roledescription="slide">
+          <button class="pcard pcard--orange" data-modal="tpl-night">
+            <img src="images/night.jpg" alt="夜の動物園">
+            <span class="pcard__label">夏の夜間開園<br>（期間限定）<i>›</i></span>
+          </button>
+        </li>
+      </ul>
+    </div>
+    <div class="slider__dots" id="dots" role="tablist" aria-label="スライドの選択"></div>
+  </div>
+</section>
+
+<!-- お知らせ（アコーディオン） -->
+<section class="news" aria-labelledby="newsTitle">
+  <h2 class="news__title" id="newsTitle" data-split>お知らせ</h2>
+  <div class="acc" data-accordion data-single>
+    <div class="acc__item">
+      <h3><button class="acc__btn" aria-expanded="false">
+        <time>2026.11.13</time><span class="tag">ニュース</span><span class="acc__text">【重要】チケットの偽サイトにご注意ください</span><i class="acc__icon" aria-hidden="true"></i>
+      </button></h3>
+      <div class="acc__panel"><div><p>当園の名をかたる偽のチケット販売サイトが確認されています。購入は必ず公式の案内からお願いします。不審なサイトでの入力はお控えください。（※これはデモ用の文章です）</p></div></div>
+    </div>
+    <div class="acc__item">
+      <h3><button class="acc__btn" aria-expanded="false">
+        <time>2026.11.10</time><span class="tag tag--event">イベント</span><span class="acc__text">【期間限定】夏の夜間開園を実施します</span><i class="acc__icon" aria-hidden="true"></i>
+      </button></h3>
+      <div class="acc__panel"><div><p>夏休み期間の金・土曜日は20:30まで開園します。夜ならではの動物たちの姿をお楽しみください。（※デモ用）</p></div></div>
+    </div>
+    <div class="acc__item">
+      <h3><button class="acc__btn" aria-expanded="false">
+        <time>2026.11.08</time><span class="tag tag--animal">動物情報</span><span class="acc__text">ゾウの体重測定を実施しました</span><i class="acc__icon" aria-hidden="true"></i>
+      </button></h3>
+      <div class="acc__panel"><div><p>飼育員の合図に合わせて、ゾウたちが順番に体重計へ。みんな元気に成長しています。（※デモ用）</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 旅バンド（パララックス） -->
+<section class="journey" id="about">
+  <div class="journey__bg" data-parallax="0.3">
+    <img src="images/forest.png" alt="緑豊かな森">
+  </div>
+  <div class="journey__inner">
+    <h2 class="journey__title" data-split>山のふもとから、<br>命をめぐる森の旅へ</h2>
+    <a class="btn btn--ghost" href="#" data-modal="tpl-map">園内マップを見る →</a>
+   <div class="journey__cards">
+      <a class="jcard" href="feeding.html"><img src="images/feeding.jpg" alt="食事の様子"><span>間近で見れる<br>お食事タイム</span></a>
+      <a class="jcard" href="enjoy.html"><img src="images/amusement.jpg" alt="遊園地エリア"><span>知れば倍たのしい<br>動物園を120%楽しむ</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- 動物を知る -->
+<section class="explore" id="animals">
+  <div class="explore__head">
+    <h2 class="explore__title" data-split>草原から森まで<br>動物たちの魅力を<br>探ろう</h2>
+    <ul class="circles">
+      <li><img src="images/elephant.jpg" alt="ゾウ"></li>
+      <li><img src="images/giraffe.jpg" alt="キリン"></li>
+      <li><img src="images/panda.jpg" alt="レッサーパンダ"></li>
+      <li><img src="images/penguin.jpg" alt="ペンギン"></li>
+    </ul>
+    <a class="bubble" href="animals.html">動物を<br>知る →</a>
+  </div>
+
+  <div class="explore__cards">
+    <article class="bigcard">
+      <div class="bigcard__body">
+        <h3>ふれあい<br>体験をしよう</h3>
+        <p>動物園でしか味わえない体験でたくさんの感動に出会えます。</p>
+      </div>
+      <figure><img src="images/touch.png" alt="キリンにエサをあげる子ども"></figure>
+    </article>
+    <article class="bigcard">
+      <div class="bigcard__body">
+        <h3>動物園の舞台ウラ</h3>
+        <p>飼育員が垣間見れる、動物たちの普段の姿をお届け。</p>
+      </div>
+      <figure><img src="images/keeper.jpg" alt="飼育員とレッサーパンダ"></figure>
+    </article>
+  </div>
+</section>
+
+<!-- FAQ（アコーディオン） -->
+<section class="faq" id="faq">
+  <h2 class="faq__title" data-split>よくある質問</h2>
+  <div class="acc" data-accordion>
+    <div class="acc__item">
+      <h3><button class="acc__btn" aria-expanded="false"><span class="q">Q</span><span class="acc__text">ベビーカーは貸し出していますか？</span><i class="acc__icon" aria-hidden="true"></i></button></h3>
+      <div class="acc__panel"><div><p>正面ゲート横の案内所で無料貸出を行っています（数に限りがあります）。</p></div></div>
+    </div>
+    <div class="acc__item">
+      <h3><button class="acc__btn" aria-expanded="false"><span class="q">Q</span><span class="acc__text">雨の日でも楽しめますか？</span><i class="acc__icon" aria-hidden="true"></i></button></h3>
+      <div class="acc__panel"><div><p>屋内展示や屋根付きの休憩所があります。雨の日ならではの動物たちの様子もお楽しみください。</p></div></div>
+    </div>
+    <div class="acc__item">
+      <h3><button class="acc__btn" aria-expanded="false"><span class="q">Q</span><span class="acc__text">お弁当の持ち込みはできますか？</span><i class="acc__icon" aria-hidden="true"></i></button></h3>
+      <div class="acc__panel"><div><p>ピクニック広場など指定エリアでお召し上がりいただけます。動物にエサを与えないようご注意ください。</p></div></div>
+    </div>
+    <div class="acc__item">
+      <h3><button class="acc__btn" aria-expanded="false"><span class="q">Q</span><span class="acc__text">ペットを連れて入園できますか？</span><i class="acc__icon" aria-hidden="true"></i></button></h3>
+      <div class="acc__panel"><div><p>動物の安全のため、盲導犬・介助犬などを除きペットの同伴はご遠慮いただいています。</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 周辺観光 -->
+<section class="around" id="around" aria-label="周辺観光案内">
+  <h2 class="around__title">周辺観光案内 →</h2>
+  <ul>
+    <li><a href="#">🏯 お城</a></li>
+    <li><a href="#">🌲 日本庭園</a></li>
+    <li><a href="#">🚃 路面電車アクセス</a></li>
+    <li><a href="#">🏞️ 湖畔公園</a></li>
+    <li><a href="#">🏠 姉妹施設</a></li>
+  </ul>
+</section>
+</main>
+
+<footer class="footer">
+  <p class="footer__follow">フォローして動物園とつながろう！</p>
+  <ul class="sns" aria-label="SNS">
+    <li><a href="#" aria-label="X"><img src="images/x.png" alt=""></a></li>
+    <li><a href="#" aria-label="Instagram"><img src="images/Instagram.png" alt=""></a></li>
+    <li><a href="#" aria-label="LINE"><img src="images/LINE.png" alt=""></a></li>
+    <li><a href="#" aria-label="YouTube"><img src="images/youtube.png" alt=""></a></li>
+    <li><a href="#" aria-label="Facebook"><img src="images/Facebook.png" alt=""></a></li>
+  </ul>
+  <ul class="footer__links">
+    <li><a href="#">ご利用案内</a></li><li><a href="#">動物園について</a></li><li><a href="#">ふれあい・イベント</a></li>
+    <li><a href="#">動物を知る</a></li><li><a href="#">運営会社</a></li><li><a href="#">プライバシーポリシー</a></li>
+    <li><a href="#">採用情報</a></li><li><a href="#">団体・法人のお客様へ</a></li>
+  </ul>
+  <p class="footer__copy">© 2026 Mori-no Zoo (Demo). 架空の施設によるデモサイトです。</p>
+</footer>
+
+<!-- モーダル -->
+<dialog class="modal" id="modal" aria-labelledby="modalTitle">
+  <div class="modal__box">
+    <button class="modal__close" data-close aria-label="閉じる">×</button>
+    <div class="modal__content" id="modalContent"></div>
+  </div>
+</dialog>
+
+<!-- モーダル内容テンプレート（ここを編集して差し替え） -->
+<template id="tpl-events">
+  <h2 id="modalTitle">本日のイベント</h2>
+  <ul class="timeline">
+    <li><time>10:30</time>レッサーパンダのもぐもぐタイム</li>
+    <li><time>11:30</time>ペンギンのお散歩タイム</li>
+    <li><time>13:00</time>ふれあい広場（モルモット）</li>
+    <li><time>14:30</time>キリンのエサやり体験</li>
+    <li><time>15:30</time>ゾウのお食事タイム</li>
+  </ul>
+  <p class="modal__note">※天候・動物の体調により変更になる場合があります。</p>
+</template>
+<template id="tpl-ticket">
+  <h2 id="modalTitle">入園料・eチケット</h2>
+  <table class="price">
+    <tr><th>おとな</th><td>600円</td></tr>
+    <tr><th>中学生以下</th><td>無料</td></tr>
+    <tr><th>65歳以上</th><td>300円</td></tr>
+  </table>
+  <p class="modal__note">※金額はデモ用の仮の数字です。eチケットは当日でも購入できます。</p>
+</template>
+<template id="tpl-access">
+  <h2 id="modalTitle">アクセス・駐車場</h2>
+  <p>路面電車「どうぶつ園前」駅より徒歩5分。普通車約400台分の駐車場があります。（デモ用）</p>
+</template>
+<template id="tpl-map">
+  <h2 id="modalTitle">園内マップ</h2>
+  <img class="modal__img" src="images/map.png" alt="園内マップ">
+</template>
+<template id="tpl-giraffe">
+  <h2 id="modalTitle">キリンのエサやり体験</h2>
+  <img class="modal__img" src="images/giraffe.jpg" alt="キリン">
+  <p>長い舌でエサを受け取るキリンを間近で。1回300円、整理券制です。</p>
+</template>
+<template id="tpl-elephant">
+  <h2 id="modalTitle">赤ちゃんゾウ公開中！</h2>
+  <img class="modal__img" src="images/elephant.jpg" alt="ゾウ">
+  <p>今年生まれた赤ちゃんゾウが、お母さんと一緒に元気に過ごしています。</p>
+</template>
+<template id="tpl-guinea">
+  <h2 id="modalTitle">ふれあい広場でモルモットと</h2>
+  <img class="modal__img" src="images/guinea.jpg" alt="モルモット">
+  <p>やさしくなでて、ふわふわの手ざわりを体験しよう。手洗いをお忘れなく。</p>
+</template>
+<template id="tpl-panda">
+  <h2 id="modalTitle">レッサーパンダのもぐもぐタイム</h2>
+  <img class="modal__img" src="images/panda.jpg" alt="レッサーパンダ">
+  <p>飼育員の解説つきで、おやつを食べる姿を観察できます。</p>
+</template>
+<template id="tpl-penguin">
+  <h2 id="modalTitle">ペンギンのお散歩タイム</h2>
+  <img class="modal__img" src="images/penguin.jpg" alt="ペンギン">
+  <p>よちよち歩く行列は一番人気。通路の脇でお待ちください。</p>
+</template>
+<template id="tpl-night">
+  <h2 id="modalTitle">夏の夜間開園</h2>
+  <img class="modal__img" src="images/night.jpg" alt="夜の動物園">
+  <p>夏休み期間の金・土曜は20:30まで。夜行性動物の活発な姿に会えます。</p>
+</template>
+<!-- ショップ&レストラン -->
+<template id="tpl-shop">
+  <h2 id="modalTitle">ショップ&amp;レストラン</h2>
+  <p>地元食材を使ったメニューや、動物モチーフのオリジナルグッズがそろっています。</p>
+  <table class="price">
+    <tr>
+      <th>森のキッチン<br><small>（中央広場）</small></th>
+      <td>カレー・パスタ・キッズプレートなど（10:30〜16:00）</td>
+    </tr>
+    <tr>
+      <th>サバンナカフェ<br><small>（テラス横）</small></th>
+      <td>ソフトクリーム・ドリンク・軽食（10:00〜16:30）</td>
+    </tr>
+    <tr>
+      <th>もりのおみやげ屋<br><small>（正面ゲート横）</small></th>
+      <td>ぬいぐるみ・お菓子・オリジナル雑貨（9:30〜17:00）</td>
+    </tr>
+  </table>
+  <p class="modal__note">※営業時間・メニューは季節により変更になる場合があります。（デモ用）</p>
+</template>
+
+<!-- バリアフリー情報 -->
+<template id="tpl-barrierfree">
+  <h2 id="modalTitle">バリアフリー情報</h2>
+  <p>すべてのお客様に安心してお過ごしいただけるよう、園内のバリアフリー化を進めています。</p>
+  <table class="price">
+    <tr>
+      <th>車いすの貸出</th>
+      <td>正面ゲート案内所にて無料貸出（予約不要・先着順）</td>
+    </tr>
+    <tr>
+      <th>多目的トイレ</th>
+      <td>園内5か所に設置（オストメイト対応・おむつ交換台あり）</td>
+    </tr>
+    <tr>
+      <th>園内ルート</th>
+      <td>主要エリアはスロープ対応。一部坂道には迂回ルートをご案内しています</td>
+    </tr>
+    <tr>
+      <th>介助犬の同伴</th>
+      <td>盲導犬・介助犬・聴導犬と一緒にご入園いただけます</td>
+    </tr>
+  </table>
+  <p class="modal__note">※入園料の障がい者割引については窓口または案内所でお尋ねください。（デモ用）</p>
+</template>
+
+<!-- ベビーカー・授乳室 -->
+<template id="tpl-baby">
+  <h2 id="modalTitle">ベビーカー・授乳室</h2>
+  <p>小さなお子さま連れでも快適にお楽しみいただける設備をご用意しています。</p>
+  <table class="price">
+    <tr>
+      <th>ベビーカー貸出</th>
+      <td>正面ゲート横案内所にて無料貸出（生後7か月〜24か月頃対象・台数限定）</td>
+    </tr>
+    <tr>
+      <th>授乳室</th>
+      <td>中央広場「ベビーケアルーム」・正面ゲート横の2か所（調乳用お湯あり）</td>
+    </tr>
+    <tr>
+      <th>おむつ交換台</th>
+      <td>園内すべての多目的トイレ・女性用トイレ内に設置</td>
+    </tr>
+    <tr>
+      <th>離乳食の温め</th>
+      <td>「森のキッチン」スタッフにお声がけいただければ電子レンジをご利用いただけます</td>
+    </tr>
+  </table>
+  <p class="modal__note">※園内のすべてのトイレにおむつ用ダストボックスを備えています。（デモ用）</p>
+</template>
+
+<!-- ルールとマナー -->
+<template id="tpl-rules">
+  <h2 id="modalTitle">ルールとマナー</h2>
+  <p>動物たちの健康と安全、そして皆さまに気持ちよくお過ごしいただくためのお願いです。</p>
+  <ul class="timeline">
+    <li><time>エサやり</time>園外から持ち込んだ食べ物・お菓子は与えないでください</li>
+    <li><time>撮影</time>フラッシュ撮影や、ガラス・柵を叩く行為はご遠慮ください</li>
+    <li><time>持ち込み</time>ペット・ドローン・ボールやキックボード等の遊具は持ち込み不可です</li>
+    <li><time>喫煙</time>園内は全面禁煙です（正面ゲート外の指定喫煙所をご利用ください）</li>
+  </ul>
+  <p class="modal__note">※係員の指示に従っていただけない場合は、ご退園をお願いすることがあります。（デモ用）</p>
+</template>
+
+<script src="script.js"></script>
+</body>
+</html>

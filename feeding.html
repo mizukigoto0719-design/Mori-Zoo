@@ -1,0 +1,531 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>間近で見れるお食事タイム｜もりのどうぶつ園（デモサイト）</title>
+<meta name="description" content="もりのどうぶつ園の人気イベント「お食事タイム」のタイムスケジュールや見どころをご紹介。架空の施設です。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  /* feeding.html 専用スタイル */
+  .sub-hero {
+    position: relative;
+    padding: 5.5rem 1.25rem 4rem;
+    text-align: center;
+    color: #fff;
+    background: linear-gradient(135deg, rgba(32, 92, 58, 0.85), rgba(56, 134, 89, 0.78)),
+                url("images/feeding.jpg") center / cover no-repeat;
+    border-radius: 0 0 2rem 2rem;
+    overflow: hidden;
+  }
+  .sub-hero__en {
+    font-family: "Poppins", sans-serif;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    font-size: 0.85rem;
+    color: #ffe27a;
+    margin-bottom: 0.5rem;
+  }
+  .sub-hero__title {
+    font-size: clamp(1.75rem, 4vw, 2.6rem);
+    font-weight: 900;
+    line-height: 1.35;
+    margin: 0 0 1rem;
+  }
+  .sub-hero__lead {
+    max-width: 620px;
+    margin: 0 auto;
+    font-size: 0.98rem;
+    line-height: 1.8;
+    opacity: 0.95;
+  }
+  .breadcrumb {
+    max-width: 1040px;
+    margin: 1rem auto 0;
+    padding: 0 1.25rem;
+    font-size: 0.85rem;
+    color: #5b6b61;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    align-items: center;
+  }
+  .breadcrumb a {
+    color: #2e8b57;
+    text-decoration: none;
+    font-weight: 700;
+  }
+  .breadcrumb a:hover { text-decoration: underline; }
+
+  .feed-wrap {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 2.5rem 1.25rem 4.5rem;
+  }
+  .sec-head {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  .sec-head__sub {
+    display: inline-block;
+    background: #e7f5ec;
+    color: #257347;
+    font-weight: 700;
+    font-size: 0.82rem;
+    padding: 0.25rem 0.9rem;
+    border-radius: 999px;
+    margin-bottom: 0.5rem;
+  }
+  .sec-head__title {
+    font-size: clamp(1.4rem, 3vw, 1.9rem);
+    font-weight: 900;
+    color: #1f3528;
+    margin: 0;
+  }
+
+  /* タイムテーブル */
+  .timetable {
+    display: grid;
+    gap: 1.25rem;
+    margin-bottom: 3.5rem;
+  }
+  .tcard {
+    background: #fff;
+    border-radius: 1.25rem;
+    box-shadow: 0 8px 24px rgba(28, 56, 40, 0.07);
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    border: 1px solid #e6efe9;
+  }
+  .tcard__img {
+    position: relative;
+    height: 100%;
+    min-height: 180px;
+  }
+  .tcard__img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .tcard__time {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    background: #ff7b29;
+    color: #fff;
+    font-family: "Poppins", sans-serif;
+    font-weight: 800;
+    font-size: 1rem;
+    padding: 0.3rem 0.85rem;
+    border-radius: 999px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.18);
+  }
+  .tcard__body {
+    padding: 1.35rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .tcard__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+    margin-bottom: 0.45rem;
+    font-size: 0.82rem;
+  }
+  .badge-area {
+    background: #eef6f1;
+    color: #2e8b57;
+    font-weight: 700;
+    padding: 0.2rem 0.65rem;
+    border-radius: 6px;
+  }
+  .badge-type {
+    background: #fff3e6;
+    color: #d95b16;
+    font-weight: 700;
+    padding: 0.2rem 0.65rem;
+    border-radius: 6px;
+  }
+  .tcard__title {
+    font-size: 1.25rem;
+    font-weight: 900;
+    color: #1f3528;
+    margin: 0 0 0.5rem;
+  }
+  .tcard__desc {
+    font-size: 0.94rem;
+    line-height: 1.7;
+    color: #46574d;
+    margin: 0 0 0.9rem;
+  }
+  .tcard__foot {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.75rem;
+    border-top: 1px dashed #dce7e0;
+    padding-top: 0.75rem;
+    font-size: 0.85rem;
+    color: #5b6b61;
+  }
+  .tcard__btn {
+    background: #2e8b57;
+    color: #fff;
+    border: none;
+    border-radius: 999px;
+    padding: 0.45rem 1.1rem;
+    font-weight: 700;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: transform 0.15s, background 0.15s;
+  }
+  .tcard__btn:hover {
+    background: #246e45;
+    transform: translateY(-1px);
+  }
+
+  /* 3つの楽しみ方 */
+  .points {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    margin-bottom: 3.5rem;
+  }
+  .point-box {
+    background: #f6faf7;
+    border: 1px solid #dfece4;
+    border-radius: 1.25rem;
+    padding: 1.5rem 1.25rem;
+    text-align: center;
+  }
+  .point-box__num {
+    display: inline-block;
+    font-family: "Poppins", sans-serif;
+    font-weight: 800;
+    font-size: 0.82rem;
+    color: #2e8b57;
+    background: #fff;
+    border: 1px solid #cce2d5;
+    padding: 0.2rem 0.75rem;
+    border-radius: 999px;
+    margin-bottom: 0.65rem;
+  }
+  .point-box h3 {
+    font-size: 1.08rem;
+    font-weight: 900;
+    color: #1f3528;
+    margin: 0 0 0.5rem;
+  }
+  .point-box p {
+    font-size: 0.9rem;
+    line-height: 1.65;
+    color: #4b5d52;
+    margin: 0;
+  }
+
+  /* 注意事項ボックス */
+  .notice-box {
+    background: #fffaf0;
+    border: 2px solid #f7d99c;
+    border-radius: 1.25rem;
+    padding: 1.5rem 1.75rem;
+    margin-bottom: 3rem;
+  }
+  .notice-box h3 {
+    margin: 0 0 0.75rem;
+    font-size: 1.1rem;
+    color: #9c5b0c;
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+  }
+  .notice-box ul {
+    margin: 0;
+    padding-left: 1.25rem;
+    line-height: 1.8;
+    font-size: 0.92rem;
+    color: #5c492e;
+  }
+
+  .back-area {
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.85rem 1.75rem;
+    border-radius: 999px;
+    border: 2px solid #2e8b57;
+    color: #2e8b57;
+    font-weight: 700;
+    text-decoration: none;
+    background: #fff;
+    transition: background 0.15s, color 0.15s;
+  }
+  .btn-outline:hover {
+    background: #2e8b57;
+    color: #fff;
+  }
+
+  @media (max-width: 768px) {
+    .tcard { grid-template-columns: 1fr; }
+    .tcard__img { height: 200px; }
+    .points { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- お知らせバー -->
+<div class="notice" role="note">
+  <span class="notice__icon" aria-hidden="true">i</span>
+  <p>お食事タイムは毎日開催！動物の体調や天候により時間が前後する場合があります。</p>
+</div>
+
+<!-- ヘッダー -->
+<header class="header" id="top">
+  <a class="logo" href="index.html" aria-label="もりのどうぶつ園 トップへ">
+    <svg class="logo__mark" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="18" r="13" fill="#2e8b57"/><circle cx="14" cy="22" r="9" fill="#3fa66a"/><circle cx="34" cy="22" r="9" fill="#3fa66a"/><rect x="21" y="26" width="6" height="16" rx="3" fill="#7a5230"/></svg>
+    <span class="logo__text"><strong>もりのどうぶつ園</strong><small>Mori-no Zoo (Demo)</small></span>
+  </a>
+
+  <button class="burger" id="burger" aria-expanded="false" aria-controls="gnav" aria-label="メニューを開く">
+    <span></span><span></span><span></span>
+  </button>
+
+  <nav class="gnav" id="gnav" aria-label="メインメニュー">
+    <ul>
+      <li><a href="index.html#guide">ご利用案内</a></li>
+      <li><a href="index.html#about">動物園について</a></li>
+      <li><a href="index.html#events" aria-current="page">ふれあい・イベント</a></li>
+      <li><a href="animals.html">動物を知る</a></li>
+      <li><a href="index.html#faq">よくある質問</a></li>
+      <li><a href="index.html#around">周辺観光</a></li>
+    </ul>
+    <a class="gnav__cta" href="ticket.html">eチケット購入</a>
+  </nav>
+</header>
+<div class="backdrop" id="navBackdrop" hidden></div>
+
+<main>
+  <!-- サブヒーロー -->
+  <section class="sub-hero">
+    <p class="sub-hero__en">FEEDING TIME</p>
+    <h1 class="sub-hero__title">間近で見れるお食事タイム</h1>
+    <p class="sub-hero__lead">
+      かじる音、長い舌の動き、豪快な水しぶき——。<br>
+      飼育員のライブ解説とともに、動物たちの生き生きとした「食べる姿」を目の前で観察しよう！
+    </p>
+  </section>
+
+  <!-- パンくずリスト -->
+  <nav class="breadcrumb" aria-label="パンくずリスト">
+    <a href="index.html">トップ</a>
+    <span aria-hidden="true">›</span>
+    <a href="index.html#about">園内ガイド</a>
+    <span aria-hidden="true">›</span>
+    <span>間近で見れるお食事タイム</span>
+  </nav>
+
+  <div class="feed-wrap">
+    <!-- タイムスケジュール -->
+    <section aria-labelledby="scheduleTitle">
+      <div class="sec-head">
+        <span class="sec-head__sub">DAILY SCHEDULE</span>
+        <h2 class="sec-head__title" id="scheduleTitle">本日のお食事タイムスケジュール</h2>
+      </div>
+
+      <div class="timetable">
+        <!-- 10:30 レッサーパンダ -->
+        <article class="tcard">
+          <div class="tcard__img">
+            <span class="tcard__time">10:30〜</span>
+            <img src="images/panda.jpg" alt="リンゴを食べるレッサーパンダ">
+          </div>
+          <div class="tcard__body">
+            <div class="tcard__meta">
+              <span class="badge-area">📍 小獣の森エリア</span>
+              <span class="badge-type">観察・飼育員解説</span>
+            </div>
+            <h3 class="tcard__title">レッサーパンダのもぐもぐタイム</h3>
+            <p class="tcard__desc">器用な前足で竹の葉や大好きなリンゴをつかんで食べる姿を至近距離で観察！しっぽの役割や体のひみつを飼育員が楽しく解説します。</p>
+            <div class="tcard__foot">
+              <span>参加費：無料（予約不要）</span>
+              <button class="tcard__btn" type="button" data-modal="tpl-panda">詳しく見る</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- 11:30 ペンギン -->
+        <article class="tcard">
+          <div class="tcard__img">
+            <span class="tcard__time">11:30〜</span>
+            <img src="images/penguin.jpg" alt="ペンギンのお食事とお散歩">
+          </div>
+          <div class="tcard__body">
+            <div class="tcard__meta">
+              <span class="badge-area">📍 ペンギンビーチ</span>
+              <span class="badge-type">観察・お散歩つき</span>
+            </div>
+            <h3 class="tcard__title">ペンギンのパクパク＆お散歩タイム</h3>
+            <p class="tcard__desc">よちよち歩いて登場したあと、アジやイワシを丸呑みするダイナミックな食事シーンを披露！1羽ずつの性格の違いにも注目です。</p>
+            <div class="tcard__foot">
+              <span>参加費：無料（開始10分前集合）</span>
+              <button class="tcard__btn" type="button" data-modal="tpl-penguin">詳しく見る</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- 14:30 キリン -->
+        <article class="tcard">
+          <div class="tcard__img">
+            <span class="tcard__time">14:30〜</span>
+            <img src="images/giraffe.jpg" alt="キリンのエサやり体験">
+          </div>
+          <div class="tcard__body">
+            <div class="tcard__meta">
+              <span class="badge-area">📍 サバンナテラス</span>
+              <span class="badge-type">エサやり体験（先着制）</span>
+            </div>
+            <h3 class="tcard__title">キリンの間近でエサやり体験</h3>
+            <p class="tcard__desc">専用デッキから目線の高さでキリンとご対面！約40cmもある紫色の長い舌を器用に使って木の葉やニンジンを受け取る瞬間は迫力満点です。</p>
+            <div class="tcard__foot">
+              <span>参加費：1回 300円（整理券制・先着30組）</span>
+              <button class="tcard__btn" type="button" data-modal="tpl-giraffe">詳しく見る</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- 15:30 ゾウ -->
+        <article class="tcard">
+          <div class="tcard__img">
+            <span class="tcard__time">15:30〜</span>
+            <img src="images/elephant.jpg" alt="ゾウのお食事タイム">
+          </div>
+          <div class="tcard__body">
+            <div class="tcard__meta">
+              <span class="badge-area">📍 ゾウの広場</span>
+              <span class="badge-type">観察・ガイドツアー</span>
+            </div>
+            <h3 class="tcard__title">アジアゾウの豪快お食事タイム</h3>
+            <p class="tcard__desc">1日に約100kgもの草や果物を食べるゾウたちの夕食タイム。長い鼻を器用に使って小さなエサまで拾い上げるスゴ技が見られます。</p>
+            <div class="tcard__foot">
+              <span>参加費：無料（予約不要）</span>
+              <button class="tcard__btn" type="button" data-modal="tpl-elephant">詳しく見る</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 3つの見どころ -->
+    <section aria-labelledby="pointsTitle">
+      <div class="sec-head">
+        <span class="sec-head__sub">ENJOYMENT</span>
+        <h2 class="sec-head__title" id="pointsTitle">お食事タイムがもっと楽しくなる3つのポイント</h2>
+      </div>
+
+      <div class="points">
+        <div class="point-box">
+          <span class="point-box__num">POINT 01</span>
+          <h3>野生本来の行動を引き出す工夫</h3>
+          <p>高い位置にエサを吊るしたり丸太の中に隠したり、動物が頭と体を使って食べる「環境エンリッチメント」の工夫が見られます。</p>
+        </div>
+        <div class="point-box">
+          <span class="point-box__num">POINT 02</span>
+          <h3>飼育員ならではの裏話トーク</h3>
+          <p>その日の体調や好き嫌い、個体ごとの性格など、毎日お世話をしている飼育員だからこそ知っているエピソードをお話しします。</p>
+        </div>
+        <div class="point-box">
+          <span class="point-box__num">POINT 03</span>
+          <h3>ベストポジションは10分前！</h3>
+          <p>ガラス面や専用デッキの最前列で見たい方は、開始の10分前を目安に展示場前へお集まりいただくのがおすすめです。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ご参加にあたってのお願い -->
+    <aside class="notice-box" aria-label="ご参加にあたってのお願い">
+      <h3>🌿 動物たちと安全に楽しむためのお願い</h3>
+      <ul>
+        <li>園外から持ち込んだ食べ物・お菓子は絶対に動物に与えないでください。</li>
+        <li>写真撮影時のフラッシュ使用や、ガラスを叩く行為はご遠慮ください。</li>
+        <li>動物の体調や天候により、内容の変更または中止となる場合があります。</li>
+      </ul>
+    </aside>
+
+    <!-- 導線ボタン -->
+    <div class="back-area">
+      <button class="btn btn--grad" type="button" data-modal="tpl-map">🗺️ 園内マップで場所を確認する</button>
+      <a class="btn-outline" href="index.html">← トップページへ戻る</a>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <p class="footer__follow">フォローして動物園とつながろう！</p>
+  <ul class="sns" aria-label="SNS">
+    <li><a href="#" aria-label="X"><img src="images/x.png" alt=""></a></li>
+    <li><a href="#" aria-label="Instagram"><img src="images/Instagram.png" alt=""></a></li>
+    <li><a href="#" aria-label="LINE"><img src="images/LINE.png" alt=""></a></li>
+    <li><a href="#" aria-label="YouTube"><img src="images/youtube.png" alt=""></a></li>
+    <li><a href="#" aria-label="Facebook"><img src="images/Facebook.png" alt=""></a></li>
+  </ul>
+  <ul class="footer__links">
+    <li><a href="index.html#guide">ご利用案内</a></li><li><a href="index.html#about">動物園について</a></li><li><a href="index.html#events">ふれあい・イベント</a></li>
+    <li><a href="animals.html">動物を知る</a></li><li><a href="#">運営会社</a></li><li><a href="#">プライバシーポリシー</a></li>
+    <li><a href="#">採用情報</a></li><li><a href="#">団体・法人のお客様へ</a></li>
+  </ul>
+  <p class="footer__copy">© 2026 Mori-no Zoo (Demo). 架空の施設によるデモサイトです。</p>
+</footer>
+
+<!-- モーダル -->
+<dialog class="modal" id="modal" aria-labelledby="modalTitle">
+  <div class="modal__box">
+    <button class="modal__close" data-close aria-label="閉じる">×</button>
+    <div class="modal__content" id="modalContent"></div>
+  </div>
+</dialog>
+
+<!-- モーダルテンプレート -->
+<template id="tpl-map">
+  <h2 id="modalTitle">園内マップ</h2>
+  <img class="modal__img" src="images/map.png" alt="園内マップ">
+</template>
+<template id="tpl-panda">
+  <h2 id="modalTitle">レッサーパンダのもぐもぐタイム</h2>
+  <img class="modal__img" src="images/panda.jpg" alt="レッサーパンダ">
+  <p>10:30〜 小獣の森エリアにて開催。飼育員の解説つきで、リンゴや竹の葉を食べる姿を間近で観察できます。</p>
+</template>
+<template id="tpl-penguin">
+  <h2 id="modalTitle">ペンギンのお散歩＆お食事タイム</h2>
+  <img class="modal__img" src="images/penguin.jpg" alt="ペンギン">
+  <p>11:30〜 ペンギンビーチにて開催。よちよち歩く行列のあと、豪快なエサやりタイムが始まります。</p>
+</template>
+<template id="tpl-giraffe">
+  <h2 id="modalTitle">キリンのエサやり体験</h2>
+  <img class="modal__img" src="images/giraffe.jpg" alt="キリン">
+  <p>14:30〜 サバンナテラスにて開催。長い舌でエサを受け取るキリンを間近で。1回300円、整理券制（開園時より案内所にて配布）です。</p>
+</template>
+<template id="tpl-elephant">
+  <h2 id="modalTitle">アジアゾウの豪快お食事タイム</h2>
+  <img class="modal__img" src="images/elephant.jpg" alt="ゾウ">
+  <p>15:30〜 ゾウの広場にて開催。お母さんゾウと赤ちゃんゾウが仲良くエサを食べる様子をご覧いただけます。</p>
+</template>
+
+<script src="script.js"></script>
+</body>
+</html>
